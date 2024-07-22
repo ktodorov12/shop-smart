@@ -1,11 +1,13 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
   return (
     <header>
       <div className="header-main">
         <div className="container">
-          <a href="#" className="header-logo">
+          <Link to="#" className="header-logo">
             <img src="./assets/images/logo/logo-no-background.png" alt="Shop Smart's logo" width="80" height="60" />
-          </a>
+          </Link>
 
           <div className="header-search-container">
             <input type="search" name="search" className="search-field" placeholder="Enter your product name..." />
@@ -19,39 +21,39 @@ export default function Header() {
             <div className="container">
               <ul className="desktop-menu-category-list">
                 <li className="menu-category">
-                  <a href="#" className="menu-title">
+                  <Link to="/" className="menu-title">
                     Home
-                  </a>
+                  </Link>
                 </li>
 
                 <li className="menu-category">
-                  <a href="#" className="menu-title">
+                  <Link to="/create-product" className="menu-title">
                     Create
-                  </a>
+                  </Link>
                 </li>
 
                 <li className="menu-category">
-                  <a href="#" className="menu-title">
+                  <Link to="/register" className="menu-title">
                     Register
-                  </a>
+                  </Link>
                 </li>
 
                 <li className="menu-category">
-                  <a href="#" className="menu-title">
+                  <Link to="/login" className="menu-title">
                     Login
-                  </a>
+                  </Link>
                 </li>
 
                 <li className="menu-category">
-                  <a href="#" className="menu-title">
+                  <Link to="#" className="menu-title">
                     Logout
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
-            <button className="action-btn">
+            <Link className="action-btn" to="/profile">
               <ion-icon name="person-outline"></ion-icon>
-            </button>
+            </Link>
 
             <button className="action-btn">
               <ion-icon name="heart-outline"></ion-icon>
