@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
 
+import useLogout from "../../hooks/auth/useLogout";
+import useAuthContext from "../../hooks/auth/useAuthContext";
+
 export default function Header() {
+  const { logout } = useLogout();
+  const { user } = useAuthContext();
+
+  function handleLogout(e) {
+    e.preventDefault();
+    logout();
+  }
   return (
     <header>
       <div className="header-main">
@@ -26,34 +36,66 @@ export default function Header() {
                   </Link>
                 </li>
 
-                <li className="menu-category">
+                {user ? (
+                  <>
+                    <li className="menu-category">
+                      <Link to="/create-product" className="menu-title">
+                        Create
+                      </Link>
+                    </li>
+                    <li className="menu-category">
+                      <Link className="menu-title" onClick={handleLogout}>
+                        Logout
+                      </Link>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li className="menu-category">
+                      <Link to="/register" className="menu-title">
+                        Register
+                      </Link>
+                    </li>
+                    <li className="menu-category">
+                      <Link to="/login" className="menu-title">
+                        Login
+                      </Link>
+                    </li>
+                  </>
+                )}
+                {/* <li className="menu-category">
                   <Link to="/create-product" className="menu-title">
                     Create
                   </Link>
-                </li>
+                </li> */}
 
-                <li className="menu-category">
+                {/* <li className="menu-category">
                   <Link to="/register" className="menu-title">
                     Register
                   </Link>
-                </li>
+                </li> */}
 
-                <li className="menu-category">
+                {/* <li className="menu-category">
                   <Link to="/login" className="menu-title">
                     Login
                   </Link>
-                </li>
+                </li> */}
 
-                <li className="menu-category">
-                  <Link to="#" className="menu-title">
+                {/* <li className="menu-category">
+                  <Link to="javascript:void(0)" className="menu-title" onClick={handleLogout}>
                     Logout
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
-            <Link className="action-btn" to="/profile">
+            {user && (
+              <Link className="action-btn" to="/profile">
+                <ion-icon name="person-outline"></ion-icon>
+              </Link>
+            )}
+            {/* <Link className="action-btn" to="/profile">
               <ion-icon name="person-outline"></ion-icon>
-            </Link>
+            </Link> */}
 
             <button className="action-btn">
               <ion-icon name="heart-outline"></ion-icon>
