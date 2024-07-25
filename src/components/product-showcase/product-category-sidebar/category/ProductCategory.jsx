@@ -1,81 +1,18 @@
+import { useEffect, useState } from "react";
 import ProductCategoryList from "./ProductCategoryList";
-
-const categories = [
-  {
-    img: "./assets/images/icons/dress.svg",
-    name: "Clothes",
-    sublist: [
-      {
-        name: "shorts & jeans",
-        amount: 60,
-      },
-      {
-        name: "jacket",
-        amount: 50,
-      },
-      {
-        name: "dress & frock",
-        amount: 87,
-      },
-    ],
-  },
-  {
-    img: "./assets/images/icons/shoes.svg",
-    name: "Footwear",
-    sublist: [
-      {
-        name: "Sports",
-        amount: 45,
-      },
-      {
-        name: "Formal",
-        amount: 75,
-      },
-      {
-        name: "Casual",
-        amount: 35,
-      },
-    ],
-  },
-  {
-    img: "./assets/images/icons/jewelry.svg",
-    name: "Jewelry",
-    sublist: [
-      {
-        name: "Earrings",
-        amount: 46,
-      },
-      {
-        name: "Couple Rings",
-        amount: 73,
-      },
-      {
-        name: "Necklace",
-        amount: 14,
-      },
-    ],
-  },
-  {
-    img: "./assets/images/icons/perfume.svg",
-    name: "Perfume",
-    sublist: [
-      {
-        name: "Clothes Perfume",
-        amount: 12,
-      },
-      {
-        name: "Deodorant",
-        amount: 32,
-      },
-      {
-        name: "Tan Spray",
-        amount: 14,
-      },
-    ],
-  },
-];
+import { getAllCategoriesAndSublists } from "../../../../api/apiCategories";
 
 export default function ProductCategory() {
+  const [categories, setCategoires] = useState([]);
+
+  useEffect(() => {
+    (async function () {
+      const results = await getAllCategoriesAndSublists();
+      setCategoires(results);
+      console.log(results);
+    })();
+  }, []);
+
   return (
     <div className="sidebar has-scrollbar">
       <div className="sidebar-category">
@@ -90,7 +27,7 @@ export default function ProductCategory() {
         <ul className="sidebar-menu-category-list">
           {categories.map((category) => (
             <ProductCategoryList 
-              key={category.name}
+              key={category.objectId}
               name={category.name}
               img={category.img}
               sublist={category.sublist} 
