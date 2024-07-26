@@ -9,7 +9,6 @@ export default function ProductCategory() {
     (async function () {
       const results = await getAllCategoriesAndSublists();
       setCategoires(results);
-      console.log(results);
     })();
   }, []);
 
@@ -28,9 +27,7 @@ export default function ProductCategory() {
           {categories.map((category) => (
             <ProductCategoryList 
               key={category.objectId}
-              name={category.name}
-              img={category.img}
-              sublist={category.sublist} 
+              category={category}
             />
           ))}
         </ul>
