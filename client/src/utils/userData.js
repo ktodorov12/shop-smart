@@ -4,7 +4,7 @@ export function setSessionData(name, data) {
 
 export function getSessionData(name) {
   const data = JSON.parse(localStorage.getItem(name));
-  return data || "";
+  return data || undefined;
 }
 
 export function removeSessionData(name) {
@@ -13,5 +13,5 @@ export function removeSessionData(name) {
 
 export function getUserToken() {
   const userData = getSessionData("userData");
-  return userData?.sessionToken;
+  return userData?.accessToken;
 }

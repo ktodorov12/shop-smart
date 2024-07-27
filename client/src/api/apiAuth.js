@@ -1,18 +1,18 @@
 import requester from "../api/requester";
 
 const endpoints = {
-  login: "/login",
-  register: "/users",
-  logout: "/logout",
+  login: "/users/login",
+  register: "/users/register",
+  logout: "/users/logout",
 };
 
-export async function login({ username, password }) {
-  if (!username || !password) {
+export async function login({ email, password }) {
+  if (!email || !password) {
     //TODO change error handling when there is no data;
     return null;
   }
 
-  const user = requester.post(endpoints.login, { username, password });
+  const user = requester.post(endpoints.login, { email, password });
   return user;
 }
 
@@ -32,5 +32,5 @@ export async function register({ fullName, email, username, password, rePass }) 
 }
 
 export async function logOut() {
-  await requester.post(endpoints.logout, {});
+  await requester.get(endpoints.logout);
 }

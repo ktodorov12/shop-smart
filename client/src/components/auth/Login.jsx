@@ -5,7 +5,7 @@ import useForm from "../../hooks/useForm";
 import useLogin from "../../hooks/auth/useLogin";
 
 const initialData = {
-  username: "",
+  email: "",
   password: "",
 };
 
@@ -25,14 +25,14 @@ export default function Login() {
           <p>Enter your details to continue</p>
 
           <div className={styles["form-group"]}>
-            <label htmlFor="username">Username</label>
+            <label htmlFor="email">Email</label>
             <input 
               type="text" 
-              id="username" 
-              name="username" 
+              id="email" 
+              name="email" 
               required 
               onChange={dataChangeHandler}
-              value={userData.username}
+              value={userData.email}
             />
           </div>
 

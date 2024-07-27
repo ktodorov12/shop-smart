@@ -1,8 +1,6 @@
 import { getUserToken } from "../utils/userData";
 
-const BASE_URL = "https://parseapi.back4app.com";
-const appId = "v7YdnVkISJ3hnhP261ZbPJGtB5x0MF3fEteKqDcQ";
-const apiKey = "Ycj8AZgp6us5vnXUHtqZIhwIJTX8Dhf3sAj76cgZ";
+const BASE_URL = "http://localhost:3030";
 /**
  * Basic requester
  * @param {string} url - the url for the fetch
@@ -15,10 +13,7 @@ async function requester(url, method, data) {
   const finalUrl = BASE_URL + url;
   const options = {
     method,
-    headers: {
-      "X-Parse-Application-Id": appId,
-      "X-Parse-REST-API-Key": apiKey,
-    },
+    headers: {},
   };
 
   if (data) {
@@ -29,7 +24,7 @@ async function requester(url, method, data) {
 
   const token = getUserToken();
   if (token) {
-    options.headers["X-Parse-Session-Token"] = token;
+    options.headers["X-Authorization"] = token;
   }
 
   try {

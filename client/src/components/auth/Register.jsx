@@ -5,7 +5,7 @@ import useForm from "../../hooks/useForm";
 import useSignup from "../../hooks/auth/useSignup";
 
 const initialData = {
-   fullName: "",
+  fullName: "",
   email: "",
   username: "",
   password: "",
