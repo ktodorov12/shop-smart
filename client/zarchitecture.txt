@@ -1,0 +1,99 @@
+src/
+  ├── assets/
+  │   ├── css/
+  │   ├── images/
+  │   ├── js/
+  ├── components/
+  │   ├── banner/
+  │   │   ├── Banner.jsx
+  │   │   ├── SliderItem.jsx
+  │   ├── footer/
+  │   │   ├── Footer.jsx
+  │   ├── header/
+  │   │   ├── Header.jsx
+  │   ├── product-showcase/
+  │   │   ├── ProductCategoryShowcase.jsx
+  │   │   ├── product-category-sidebar/
+  │   │   │   ├── category/
+  │   │   │   │   ├── ProductCategory.jsx 
+  │   │   │   │   ├── ProductCategoryList.jsx 
+  │   │   │   │   ├── ProductSubmenuCategoryList.jsx 
+  │   │   │   ├── showcase/
+  │   │   ├── products/
+  │   │   │   ├── ProductItemCard.jsx
+  │   ├── auth/
+  │   │   ├── Login.jsx
+  │   │   ├── Register.jsx
+  │   ├── create-edit/
+  │   │   ├── CreateEdit.jsx
+  │   ├── profile/
+  │   │   ├── Profile.jsx
+  ├── hooks/
+  ├── api/
+  ├── utils/
+  ├── tests/
+  ├── App.jsx
+  ├── index.jsx
+
+
+//////////////////CHAT
+src/
+  ├── assets/
+  │   ├── css/
+  │   ├── images/
+  │   ├── js/
+  ├── components/
+  │   ├── banner/
+  │   │   ├── Banner.jsx
+  │   │   ├── Banner.module.css
+  │   │   ├── SliderItem.jsx
+  │   │   ├── api.js
+  │   │   ├── utils.js
+  │   ├── footer/
+  │   │   ├── Footer.jsx
+  │   │   ├── Footer.module.css
+  │   ├── header/
+  │   │   ├── Header.jsx
+  │   │   ├── Header.module.css
+  │   │   ├── api.js
+  │   ├── product-showcase/
+  │   │   ├── ProductCategoryShowcase.jsx
+  │   │   ├── ProductCategoryShowcase.module.css
+  │   │   ├── product-category-sidebar/
+  │   │   │   ├── category/
+  │   │   │   │   ├── ProductCategory.jsx 
+  │   │   │   │   ├── ProductCategory.module.css
+  │   │   │   │   ├── ProductCategoryList.jsx 
+  │   │   │   │   ├── ProductCategoryList.module.css
+  │   │   │   │   ├── ProductSubmenuCategoryList.jsx 
+  │   │   │   │   ├── ProductSubmenuCategoryList.module.css
+  │   │   │   ├── showcase/
+  │   │   ├── products/
+  │   │   │   ├── ProductItemCard.jsx
+  │   │   │   ├── ProductItemCard.module.css
+  │   │   │   ├── api.js
+  │   ├── auth/
+  │   │   ├── Login.jsx
+  │   │   ├── Login.module.css
+  │   │   ├── Register.jsx
+  │   │   ├── Register.module.css
+  │   │   ├── api.js
+  │   ├── create-edit/
+  │   │   ├── CreateEdit.jsx
+  │   │   ├── CreateEdit.module.css
+  │   │   ├── api.js
+  │   ├── profile/
+  │   │   ├── Profile.jsx
+  │   │   ├── Profile.module.css
+  │   │   ├── api.js
+  ├── hooks/
+  │   ├── useAuth.js
+  │   ├── useFetch.js
+  ├── api/
+  │   ├── auth.js
+  │   ├── product.js
+  ├── utils/
+  │   ├── formatDate.js
+  │   ├── calculatePrice.js
+  ├── App.jsx
+  ├── index.jsx
