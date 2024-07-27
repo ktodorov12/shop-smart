@@ -14,6 +14,8 @@ export default function useForm(initialValue, callback) {
     const formData = Object.entries({ ...data });
     const entries = formData.map(([k, v]) => [k, v.trim()]);
     callback(Object.fromEntries(entries));
+
+    setData(initialValue);
   }
 
   return { data, dataChangeHandler, submitHandler };
