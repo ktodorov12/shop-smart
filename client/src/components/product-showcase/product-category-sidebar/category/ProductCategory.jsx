@@ -1,16 +1,8 @@
-import { useEffect, useState } from "react";
 import ProductCategoryList from "./ProductCategoryList";
-import { getAllCategoriesAndSublists } from "../../../../api/apiCategories";
+import { useGetAllCategories } from "../../../../hooks/useCategory";
 
 export default function ProductCategory() {
-  const [categories, setCategoires] = useState([]);
-
-  useEffect(() => {
-    (async function () {
-      const results = await getAllCategoriesAndSublists();
-      setCategoires(results);
-    })();
-  }, []);
+  const { categories, isLoading, error } = useGetAllCategories();
 
   return (
     <div className="sidebar has-scrollbar">
@@ -26,7 +18,7 @@ export default function ProductCategory() {
         <ul className="sidebar-menu-category-list">
           {categories.map((category) => (
             <ProductCategoryList 
-              key={category.objectId}
+              key={category._id}
               category={category}
             />
           ))}

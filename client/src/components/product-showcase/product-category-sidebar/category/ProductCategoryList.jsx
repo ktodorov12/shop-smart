@@ -1,11 +1,14 @@
 import { useState } from "react";
-import ProductCategoryListItem from "./ProductSubmenuCategoryListItem";
+
+import { useGetSublistForCattegory } from "../../../../hooks/useCategory";
 
 export default function ProductCategoryList({ category }) {
+  const { sublist, isLoading, error } = useGetSublistForCattegory(category);
   const [active, setActive] = useState(false);
-  const handleActive = () => setActive(oldState => !oldState);
+
+  const handleActive = () => setActive((oldState) => !oldState);
   const isActive = active ? "active" : null;
-  
+
   return (
     <li className="sidebar-menu-category" onClick={handleActive}>
       <button className={`sidebar-accordion-menu ${isActive}`} data-accordion-btn>
@@ -15,21 +18,19 @@ export default function ProductCategoryList({ category }) {
           <p className="menu-title">{category.name}</p>
         </div>
 
-        <div>
-          {isActive
-            ? <ion-icon name="remove-outline" className="remove-icon"></ion-icon>
-            : <ion-icon name="add-outline" className="add-icon"></ion-icon>
-          }
-        </div>
+        <div>{isActive ? <ion-icon name="remove-outline" className="remove-icon"></ion-icon> : <ion-icon name="add-outline" className="add-icon"></ion-icon>}</div>
       </button>
 
       <ul className={`sidebar-submenu-category-list ${isActive}`} data-accordion>
-        {category.sublist.map((sub) => (
-          <ProductCategoryListItem 
-                key={sub.name}
-                name={sub.name}
-                amount={sub.amount}
-          />
+        {sublist.map((sub) => (
+          <li key={sub._id} className="sidebar-submenu-category">
+            <a href="#" className="sidebar-submenu-title">
+              <p className="product-name">{sub.name}</p>
+              <data value={sub.amount} className="stock" title="Available Stock">
+                {sub.amount}
+              </data>
+            </a>
+          </li>
         ))}
       </ul>
     </li>

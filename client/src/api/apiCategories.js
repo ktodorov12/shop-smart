@@ -2,10 +2,15 @@ import requester from "../api/requester";
 
 const endpoints = {
   category: "/data/categories",
+  sublist: (params) => `/data/sublist?${params}`,
 };
 
-export async function getAllCategoriesAndSublists() {
-  const result = await requester.get(endpoints.category);
+export const getCategories = async () => requester.get(endpoints.category);
 
-  return result;
+export async function getSublist(categoryId) {
+  const params = new URLSearchParams({
+    where: `categoryId="${categoryId}"`,
+  });
+
+  return await requester.get(endpoints.sublist(params));
 }

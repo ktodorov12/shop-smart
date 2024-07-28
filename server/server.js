@@ -1343,33 +1343,144 @@
             "a9bae6d8-793e-46c4-a9db-deb9e3484909": {
     			name: "Men's Clothing",
     			img: "./assets/images/icons/tee.svg",
-    			sublist: [],
     			_id: "a9bae6d8-793e-46c4-a9db-deb9e3484909"
     		},
             "b9e75605-b617-43ac-87a9-8409a990801a": {
     			name: "Beauty",
     			img: "./assets/images/icons/cosmetics.svg",
-    			sublist: [],
     			_id: "b9e75605-b617-43ac-87a9-8409a990801a"
     		},
             "a459bacd-2912-4eb4-848c-8bc471da2d9f": {
     			name: "Women's Clothing",
     			img: "./assets/images/icons/dress.svg",
-    			sublist: [],
     			_id: "a459bacd-2912-4eb4-848c-8bc471da2d9f"
     		},
             "79aacd2b-b8ce-4eed-9aab-82abbb334741": {
     			name: "Electronics",
     			img: "./assets/images/icons/pc.svg",
-    			sublist: [],
     			_id: "79aacd2b-b8ce-4eed-9aab-82abbb334741"
     		},
             "985d9eab-ad2e-4622-a5c8-116261fb1fd2": {
     			name: "Footwear",
     			img: "./assets/images/icons/shoes.svg",
-    			sublist: [],
     			_id: "985d9eab-ad2e-4622-a5c8-116261fb1fd2"
     		}
+        },
+        sublist: {
+            "fb352199-bcbc-4e1d-a1dc-ed346a6fb49a": {
+    			name: "Tops",
+    			amount: 0,
+                categoryId: "a459bacd-2912-4eb4-848c-8bc471da2d9f",
+    			_id: "fb352199-bcbc-4e1d-a1dc-ed346a6fb49a"
+    		},
+            "4fccdb3a-59c9-4e45-a28f-870fe5d1d8be": {
+    			name: "Shirts",
+    			amount: 0,
+                categoryId: "a459bacd-2912-4eb4-848c-8bc471da2d9f",
+    			_id: "4fccdb3a-59c9-4e45-a28f-870fe5d1d8be"
+    		},
+            "562f8422-88cc-47f9-b273-ed12a319d041": {
+    			name: "Dresses",
+    			amount: 0,
+                categoryId: "a459bacd-2912-4eb4-848c-8bc471da2d9f",
+    			_id: "562f8422-88cc-47f9-b273-ed12a319d041"
+    		},
+            "9d12abaf-b2f0-4c10-bb14-8bb90b5e518f": {
+    			name: "Skirts",
+    			amount: 0,
+                categoryId: "a459bacd-2912-4eb4-848c-8bc471da2d9f",
+    			_id: "9d12abaf-b2f0-4c10-bb14-8bb90b5e518f"
+    		},
+            "8677c541-4041-4122-9db3-b88caf93e76d": {
+    			name: "Shorts & Jeans",
+    			amount: 0,
+                categoryId: "a459bacd-2912-4eb4-848c-8bc471da2d9f",
+    			_id: "8677c541-4041-4122-9db3-b88caf93e76d"
+    		},
+            "ee9823ab-c3e8-4a14-b998-8c22ec246bd3": {
+    			name: "Computer & Tablets",
+    			amount: 0,
+                categoryId: "79aacd2b-b8ce-4eed-9aab-82abbb334741",
+    			_id: "ee9823ab-c3e8-4a14-b998-8c22ec246bd3"
+    		},
+            "3044dd0f-c25e-45a4-9541-47cddc4caaf8": {
+    			name: "Smartphones",
+    			amount: 0,
+                categoryId: "79aacd2b-b8ce-4eed-9aab-82abbb334741",
+    			_id: "3044dd0f-c25e-45a4-9541-47cddc4caaf8"
+    		},
+            "6012c542-38e1-4660-ba40-1b109c40cb2f": {
+    			name: "Home Tech",
+    			amount: 0,
+                categoryId: "79aacd2b-b8ce-4eed-9aab-82abbb334741",
+    			_id: "6012c542-38e1-4660-ba40-1b109c40cb2f"
+    		},
+            "d749a819-1e41-4c65-9ce2-7b429c4ebd0d": {
+    			name: "Sneakers",
+    			amount: 0,
+                categoryId: "985d9eab-ad2e-4622-a5c8-116261fb1fd2",
+    			_id: "d749a819-1e41-4c65-9ce2-7b429c4ebd0d"
+    		},
+            "82507f4d-c867-453e-866e-0701889e8f10": {
+    			name: "Heels",
+    			amount: 0,
+                categoryId: "985d9eab-ad2e-4622-a5c8-116261fb1fd2",
+    			_id: "82507f4d-c867-453e-866e-0701889e8f10"
+    		},
+            "fdf00227-084f-48bc-a450-9242a0963f1f": {
+    			name: "Sandals",
+    			amount: 0,
+                categoryId: "985d9eab-ad2e-4622-a5c8-116261fb1fd2",
+    			_id: "fdf00227-084f-48bc-a450-9242a0963f1f"
+    		},
+            "8cd30492-3c55-4864-a1a2-7870e1694116": {
+    			name: "Boots",
+    			amount: 0,
+                categoryId: "985d9eab-ad2e-4622-a5c8-116261fb1fd2",
+    			_id: "8cd30492-3c55-4864-a1a2-7870e1694116"
+    		},
+            "9d776e93-bc6f-408c-9ab8-8aad7a5cffc4": {
+    			name: "Jackets",
+    			amount: 0,
+                categoryId: "a9bae6d8-793e-46c4-a9db-deb9e3484909",
+    			_id: "9d776e93-bc6f-408c-9ab8-8aad7a5cffc4"
+    		},
+            "a8ab018a-5a00-4652-ab3b-036bc91bd21f": {
+    			name: "Shirts",
+    			amount: 0,
+                categoryId: "a9bae6d8-793e-46c4-a9db-deb9e3484909",
+    			_id: "a8ab018a-5a00-4652-ab3b-036bc91bd21f"
+    		},
+            "3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
+    			name: "Pants",
+    			amount: 0,
+                categoryId: "a9bae6d8-793e-46c4-a9db-deb9e3484909",
+    			_id: "3987279d-0ad4-4afb-8ca9-5b256ae3b298"
+    		},
+            "8f414b4f-ab39-4d36-bedb-2ad69da9c830": {
+    			name: "Shorts & Jeans",
+    			amount: 0,
+                categoryId: "a9bae6d8-793e-46c4-a9db-deb9e3484909",
+    			_id: "8f414b4f-ab39-4d36-bedb-2ad69da9c830"
+    		},
+            "68f653c3-97c7-40be-9f8e-b3f182a0061e": {
+    			name: "Makeup",
+    			amount: 0,
+                categoryId: "b9e75605-b617-43ac-87a9-8409a990801a",
+    			_id: "68f653c3-97c7-40be-9f8e-b3f182a0061e"
+    		},
+            "28f0b99e-218b-4079-873c-f976727e3c44": {
+    			name: "Fragrances",
+    			amount: 0,
+                categoryId: "b9e75605-b617-43ac-87a9-8409a990801a",
+    			_id: "28f0b99e-218b-4079-873c-f976727e3c44"
+    		},
+            "54e6d099-6e00-4613-97b7-bc2b6bdc1db5": {
+    			name: "Skincare",
+    			amount: 0,
+                categoryId: "b9e75605-b617-43ac-87a9-8409a990801a",
+    			_id: "54e6d099-6e00-4613-97b7-bc2b6bdc1db5"
+    		},
         }
     };
     var rules$1 = {
