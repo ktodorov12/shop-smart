@@ -12,7 +12,7 @@ export function removeSessionData(name) {
 }
 
 export function getUserToken() {
-  const userData = getSessionData("userData");
+  const userData = getSessionData("user");
   return userData?.accessToken;
 }
 
