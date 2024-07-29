@@ -1,6 +1,7 @@
 import styles from "./AddEdit.module.css";
 
 import useForm from "../../hooks/useForm";
+import useAddProduct from "../../hooks/products/useAddProduct";
 
 import { getSessionData } from "../../utils/userData";
 
@@ -20,13 +21,19 @@ const initialData = {
 };
 
 export default function AddProduct() {
+  const { 
+    handleAddProduct,
+    addedProduct,
+    error,
+    isLoading
+  } = useAddProduct();
   const {
     data, 
     dataChangeHandler, 
     submitHandler,
     nestedDataChangeHandler,
     addItemToArray
-  } = useForm(initialData, handleSubmit);
+  } = useForm(initialData, handleAddProduct);
 
   const categories = getSessionData("categories");
   const pickedCategory = categories.find(c => c.name == data.category);
@@ -38,10 +45,6 @@ export default function AddProduct() {
     };
 
     addItemToArray("sizes", newSize);
-  }
-
-  function handleSubmit(entr) {
-    console.log(entr);
   }
 
   return (
