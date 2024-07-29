@@ -1441,7 +1441,7 @@
     		},
             "9d776e93-bc6f-408c-9ab8-8aad7a5cffc4": {
     			name: "Jackets",
-    			amount: 0,
+    			amount: 1,
                 categoryId: "a9bae6d8-793e-46c4-a9db-deb9e3484909",
     			_id: "9d776e93-bc6f-408c-9ab8-8aad7a5cffc4"
     		},
@@ -1481,6 +1481,38 @@
                 categoryId: "b9e75605-b617-43ac-87a9-8409a990801a",
     			_id: "54e6d099-6e00-4613-97b7-bc2b6bdc1db5"
     		},
+        },
+        items: {
+            "16f581ab-4875-44d4-b5ff-b615da020f49": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                category: "men's clothing",
+                description: "From timeless tailoring to everyday wear, the right jacket will keep you warm and in style. The brown color brings out your honest look while this chocolate leather motorcycle is superior and modish will give you just the right look to make a status statement and will be a staple item in your closet all year long and for years to come.",
+                img: "./assets/images/products/jacket-5.jpg",
+                price: "65",
+                productName: "Yarn Fleece Full-Zip Jacket",
+                sizes: [
+                    {
+                        "size": "M",
+                        "amount": "10"
+                    }, 
+                    {
+                        "size": "L",
+                        "amount": "6"
+                    }, 
+                    {
+                        "size": "XL",
+                        "amount": "11"
+                    }, 
+                    {
+                        "size": "XXL",
+                        "amount": "3"
+                    }
+                ],
+                sublist: "jackets",
+                stars: 0,
+                _createdOn: 1722272578869,
+                _id: "16f581ab-4875-44d4-b5ff-b615da020f49"
+            }
         }
     };
     var rules$1 = {
