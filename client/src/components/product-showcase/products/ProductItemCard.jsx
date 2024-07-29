@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 
-export default function ProductItemCard() {
+export default function ProductItemCard({ product }) {
   return (
     <div className="showcase">
       <div className="showcase-banner">
-        <img src="./assets/images/products/jacket-5.jpg" alt="MEN Yarn Fleece Full-Zip Jacket" className="product-img default" width="300" />
-        <img src="./assets/images/products/jacket-6.jpg" alt="MEN Yarn Fleece Full-Zip Jacket" className="product-img hover" width="300" />
+        <img src={product.img} alt={product.productName} className="productuct-img default" width="100%" />
 
         <div className="showcase-actions">
           <button className="btn-action">
@@ -19,13 +18,13 @@ export default function ProductItemCard() {
       </div>
 
       <div className="showcase-content">
-        <Link to="/details" className="showcase-category">
-          Jacket
+        <Link to={`/details/${product._id}`} className="showcase-category">
+          {product.sublist}
         </Link>
 
         <h3>
-          <Link to="/details" className="showcase-title">
-            MEN Yarn Fleece Full-Zip Jacket
+          <Link to={`/details/${product._id}`} className="showcase-title">
+            {product.productName}
           </Link>
         </h3>
 
@@ -38,7 +37,7 @@ export default function ProductItemCard() {
         </div>
 
         <div className="price-box">
-          <p className="price">$65.00</p>
+          <p className="price">${Number(product.price).toFixed(2)}</p>
         </div>
       </div>
     </div>

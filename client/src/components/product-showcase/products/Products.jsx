@@ -1,7 +1,12 @@
 import ProductItemCard from "./ProductItemCard";
 import classes from "./Products.module.css";
 
+import useFetch from "../../../hooks/useFetch";
+import { getAllProducts } from "../../../api/apiProducts";
+
 export default function Products() {
+  const { values: products, isLoading, error } = useFetch([], getAllProducts);
+
   return (
     <div className="product-main">
       <h2 className="title">Explore Marketplace</h2>
@@ -13,15 +18,9 @@ export default function Products() {
       </div>
 
       <div className="product-grid">
-        <ProductItemCard />
-        <ProductItemCard />
-        <ProductItemCard />
-        <ProductItemCard />
-        <ProductItemCard />
-        <ProductItemCard />
-        <ProductItemCard />
-        <ProductItemCard />
-        <ProductItemCard />
+        {products.map((prod) => (
+          <ProductItemCard key={prod._id} product={prod} />
+        ))}
       </div>
     </div>
   );
