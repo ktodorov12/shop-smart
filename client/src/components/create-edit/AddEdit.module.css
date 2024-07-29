@@ -55,8 +55,16 @@
     margin-bottom: 10px;
   }
   
-  #create-product-btn,
-  #create-product-btn {
+  .add-size-btn {
+    padding-bottom: 30px;
+    padding-top: 10px;
+    border: black;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .create-product-btn,
+  .create-product-btn {
     display: inline-block;
     padding: 10px;
     background-color: #007bff;
@@ -69,8 +77,8 @@
     transition: background-color 0.3s ease;
   }
   
-  #create-product-btn:hover,
-  #create-product-btn:hover {
+  .create-product-btn:hover,
+  .create-product-btn:hover {
     background-color: #0056b3;
   }
   

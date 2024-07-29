@@ -39,8 +39,8 @@ export default function Header() {
                 {user ? (
                   <>
                     <li className="menu-category">
-                      <Link to="/create-product" className="menu-title">
-                        Create
+                      <Link to="/add-product" className="menu-title">
+                        Add
                       </Link>
                     </li>
                     <li className="menu-category">

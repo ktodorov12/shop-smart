@@ -5,7 +5,7 @@ import Banner from "./components/banner/Banner";
 import ProductCategoryShowcase from "./components/product-showcase/ProductCategoryShowcase";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import CrateEdit from "./components/create-edit/CreateEdit";
+import AddProduct from "./components/create-edit/AddProduct";
 import ProductDetails from "./components/product-details/ProductDetails";
 import Profile from "./components/profile/Profile";
 import Footer from "./components/footer/Footer";
@@ -30,7 +30,7 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/create-product" element={<CrateEdit />} />
+          <Route path="/add-product" element={<AddProduct />} />
           <Route path="/product/:productId/details" element={<ProductDetails />} />
           <Route path="/profile/:profileId" element={<Profile />} />
         </Routes>
