@@ -14,7 +14,7 @@ export function addProduct(data) {
   }
 
   const newProd = {
-    categoryId: data.categoryId,
+    category: data.category,
     description: data.description,
     img: data.img,
     price: data.price,
