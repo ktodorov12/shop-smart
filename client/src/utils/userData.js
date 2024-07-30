@@ -1,14 +1,14 @@
 export function setSessionData(name, data) {
-  localStorage.setItem(name, JSON.stringify(data));
+  sessionStorage.setItem(name, JSON.stringify(data));
 }
 
 export function getSessionData(name) {
-  const data = JSON.parse(localStorage.getItem(name));
+  const data = JSON.parse(sessionStorage.getItem(name));
   return data || undefined;
 }
 
 export function removeSessionData(name) {
-  localStorage.removeItem(name);
+  sessionStorage.removeItem(name);
 }
 
 export function getUserToken() {
