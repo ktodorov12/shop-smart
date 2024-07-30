@@ -7,10 +7,12 @@ const endpoints = {
 
 export const getCategories = async () => requester.get(endpoints.category);
 
-export async function getSublist(categoryId) {
+export async function getSublist(searchParam, searchValue) {
   const params = new URLSearchParams({
-    where: `categoryId="${categoryId}"`,
+    where: `${searchParam}="${searchValue}"`,
   });
 
-  return await requester.get(endpoints.sublist(params));
+  return requester.get(endpoints.sublist(params));
+}
+
 }

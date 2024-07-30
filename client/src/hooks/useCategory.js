@@ -34,7 +34,7 @@ export function useGetSublistForCattegory(category) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleSublistCall = () => getSublist(category._id);
+  const handleSublistCall = () => getSublist("categoryId", category._id);
   const memorizedSub = useCallback(handleSublistCall, [handleSublistCall, category]);
 
   useEffect(() => {
