@@ -1,4 +1,4 @@
-import { getUserToken } from "../utils/userData";
+import { getUserToken, removeSessionData } from "../utils/userData";
 
 const BASE_URL = "http://localhost:3030";
 /**
@@ -23,7 +23,7 @@ async function requester(url, method, data) {
   }
 
   const token = getUserToken();
-  if (token) {
+  if (token && method !== "GET") {
     options.headers["X-Authorization"] = token;
   }
 
@@ -31,7 +31,12 @@ async function requester(url, method, data) {
     const response = await fetch(finalUrl, options);
 
     if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
+      const error = await response.json();
+
+      if (error.code == 403) {
+        removeSessionData("user");
+      }
+      throw new Error(`${error.message}`);
     }
 
     //TODO add logic for expired session and other HTTP code statuses
