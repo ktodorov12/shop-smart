@@ -1,6 +1,19 @@
+import { useParams } from "react-router-dom";
 import styles from "./ProductDetails.module.css";
 
+import useFetch from "../../hooks/useFetch";
+
+import { getProductById } from "../../api/apiProducts";
+
 export default function ProductDetails() {
+  const { productId } = useParams();
+  const {
+    values: product, 
+    isLoading, 
+    error} = useFetch({}, () => getProductById(productId));
+
+    console.log(product);
+
   return (
     <section className={styles["product-container"]}>
       <div className={styles["img-card"]}>

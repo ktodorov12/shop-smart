@@ -1482,7 +1482,7 @@
     			_id: "54e6d099-6e00-4613-97b7-bc2b6bdc1db5"
     		},
         },
-        items: {
+        products: {
             "16f581ab-4875-44d4-b5ff-b615da020f49": {
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
                 categoryId: "a9bae6d8-793e-46c4-a9db-deb9e3484909",
