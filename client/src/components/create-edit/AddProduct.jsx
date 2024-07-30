@@ -6,7 +6,7 @@ import useAddProduct from "../../hooks/products/useAddProduct";
 import { getSessionData } from "../../utils/userData";
 
 const initialData = {
-  category: "none",
+  categoryId: "none",
   sublist: "none",
   productName: "",
   img: "",
@@ -36,7 +36,7 @@ export default function AddProduct() {
   } = useForm(initialData, handleAddProduct);
 
   const categories = getSessionData("categories");
-  const pickedCategory = categories.find(c => c.name == data.category);
+  const pickedCategory = categories.find(c => c._id == data.categoryId);
 
   function handleAddNewSize() {
     const newSize = {
@@ -55,11 +55,11 @@ export default function AddProduct() {
           <form method="post" className={styles["create-product-form"]} onSubmit={submitHandler}>
 
             <div className={styles["form-group"]}>
-              <label htmlFor="category">Category</label>
-              <select type="text" id="category" name="category" value={data.category} onChange={dataChangeHandler} required>
+              <label htmlFor="categoryId">Category</label>
+              <select type="text" id="category" name="categoryId" value={data.categoryId} onChange={dataChangeHandler} required>
                 <option value="none">Select Category</option>
                 {categories.map(c => {
-                  return <option key={c._id} value={c.name}>{c.name}</option>;
+                  return <option key={c._id} value={c._id}>{c.name}</option>;
                 })}
               </select>
             </div>
@@ -68,7 +68,7 @@ export default function AddProduct() {
               <label htmlFor="sublist">Subcategory</label>
               <select type="text" id="sublist" name="sublist" value={data.sublist} onChange={dataChangeHandler} required>
               <option value="none">Select Subcategory</option>
-              {data.category !== "none" 
+              {data.categoryId !== "none" 
                 ? pickedCategory.sublist.map(s => {
                   return <option key={s._id} value={s.name}>{s.name}</option>;
                   })
