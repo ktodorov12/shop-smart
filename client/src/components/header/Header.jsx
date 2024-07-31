@@ -15,8 +15,8 @@ export default function Header() {
     <header>
       <div className="header-main">
         <div className="container">
-          <Link to="#" className="header-logo">
-            <img src="./assets/images/logo/logo-no-background.png" alt="Shop Smart's logo" width="80" height="60" />
+          <Link to="/" className="header-logo">
+            <img src="/assets/images/logo/logo-no-background.png" alt="Shop Smart's logo" width="80" height="60" />
           </Link>
 
           <div className="header-search-container">

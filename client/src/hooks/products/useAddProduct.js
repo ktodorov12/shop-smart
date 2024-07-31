@@ -17,7 +17,7 @@ export default function useAddProduct() {
       console.log(prod);
       setAddedProduct(prod);
 
-      navigate("/");
+      navigate(`/details/${prod._id}`);
     } catch (error) {
       setEror(error);
     } finally {

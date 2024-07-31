@@ -1487,7 +1487,7 @@
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
                 categoryId: "a9bae6d8-793e-46c4-a9db-deb9e3484909",
                 description: "From timeless tailoring to everyday wear, the right jacket will keep you warm and in style. The brown color brings out your honest look while this chocolate leather motorcycle is superior and modish will give you just the right look to make a status statement and will be a staple item in your closet all year long and for years to come.",
-                img: "./assets/images/products/jacket-5.jpg",
+                img: "/assets/images/products/jacket-5.jpg",
                 price: "65",
                 productName: "Yarn Fleece Full-Zip Jacket",
                 sizes: [
