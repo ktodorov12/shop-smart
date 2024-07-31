@@ -7,74 +7,112 @@ import { getProductById } from "../../api/apiProducts";
 
 export default function ProductDetails() {
   const { productId } = useParams();
-  const {
-    values: product, 
-    isLoading, 
-    error} = useFetch({}, () => getProductById(productId));
+  const { values: product, isLoading, error } = useFetch({}, () => getProductById(productId));
 
-    console.log(product);
+  console.log(product);
 
   return (
-    <section className={styles["product-container"]}>
-      <div className={styles["img-card"]}>
-        <img src="img/image-1.png" alt="" id="featured-image" />
-        <div className={styles["small-Card"]}>
-          <img src="img/image-1.png" alt="" className={styles["small-Img"]} />
-          <img src="img/small-img-2.png" alt="" className={styles["small-Img"]} />
-          <img src="img/small-img-3.png" alt="" className={styles["small-Img"]} />
-          <img src="img/image-1.png" alt="" className={styles["small-Img"]} />
+    <div className={styles["product-page"]}>
+      <div className={styles["left-column"]}>
+        <div className={styles["image-box"]}>
+          <img src="main-image.jpg" alt="Nike Alphafly 3" className={styles["main-image"]} />
         </div>
       </div>
+      <div className={styles["right-column"]}>
+        <h1>Nike Alphafly 3</h1>
+        <h2>Men's Road Racing Shoes</h2>
+        <div className={styles["rating"]}>Highly Rated</div>
+        <div className={styles["price"]}>BGN 599.99</div>
 
-      <div className={styles["product-info"]}>
-        <h3>LEVI'S® WOMEN'S XL TRUCKER JACKET</h3>
-        <h5>
-          Price: $140 <del>$170</del>
-        </h5>
-        <p>Lorem, ipsum .</p>
-        <p>Lorem ii?</p>
-
-        <div className={styles.sizes}>
-          <p>Size:</p>
-          <select name="Size" id="size" className={styles["size-option"]}>
-            <option value="xxl">XXL</option>
-            <option value="xl">XL</option>
-            <option value="medium">Medium</option>
-            <option value="small">Small</option>
-          </select>
+        <div className={styles["size-selection"]}>
+          <p>Select Size</p>
+          <div className={styles["sizes"]}>
+            <div className={styles["size"]}>
+              <button>EU 38.5</button>
+            </div>
+            <div className={styles["size"]}>
+              <button>EU 39</button>
+            </div>
+            <div className={styles["size"]}>
+              <button disabled>EU 40</button>
+            </div>
+            <div className={styles["size"]}>
+              <button disabled>EU 40.5</button>
+            </div>
+            <div className={styles["size"]}>
+              <button disabled>EU 41</button>
+            </div>
+            <div className={styles["size"]}>
+              <button>EU 41.5</button>
+            </div>
+            <div className={styles["size"]}>
+              <button>EU 42</button>
+            </div>
+            <div className={styles["size"]}>
+              <button>EU 42.5</button>
+            </div>
+            <div className={styles["size"]}>
+              <button>EU 43</button>
+            </div>
+            <div className={styles["size"]}>
+              <button>EU 44</button>
+            </div>
+          </div>
         </div>
 
-        <div className={styles.quantity}>
-          <input type="number" value="1" min="1" />
-          <button>Add to Cart</button>
+        <div className={styles["button-group"]}>
+          <div className={styles["quantity-add-bag"]}>
+            <label htmlFor="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" value="1" min="1" />
+            <button className={styles["add-to-bag"]}>Add to Bag</button>
+          </div>
+          <button className={styles["favorite"]}>
+            <span className={styles["heart-icon"]}>❤</span>
+          </button>
         </div>
 
-        <div>
-          <p>Delivery:</p>
-          <p>Free standard shipping on orders over $35 before tax, plus free returns.</p>
-          <div className={styles.delivery}>
-            <p>TYPE</p> <p>HOW LONG</p> <p>HOW MUCH</p>
+        <p className={styles["description"]}>
+          Fine-tuned for marathon speed, the Alphafly 3 helps push you beyond what you thought possible. Three innovative technologies power your run: a double dose of Air Zoom
+          units helps launch you into your next step; a full-length carbon-fibre plate helps propel you forwards with ease; and a heel-to-toe ZoomX foam midsole helps keep you
+          fresh from start to 26.2. Time to leave your old personal records in the dust.
+        </p>
+        <div className={styles["reviews"]}>
+          <h3>Reviews</h3>
+          <div className={styles["review-content"]}>
+            <div className={styles["review"]}>
+              <p className={styles["review-title"]}>Amazing Shoes!</p>
+              <div className={styles["review-meta"]}>
+                <span className={styles["stars"]}>★★★★★</span>
+                <span className={styles["username"]}>John Doe</span>
+                <span className={styles["date"]}>July 25, 2024</span>
+              </div>
+              <p className={styles["review-body"]}>These shoes are incredibly comfortable and provide excellent support for long runs. Highly recommended!</p>
+            </div>
           </div>
-          <hr />
-          <div className={styles.delivery}>
-            <p>Standard delivery</p>
-            <p>1-4 business days</p>
-            <p>$4.50</p>
-          </div>
-          <hr />
-          <div className={styles.delivery}>
-            <p>Express delivery</p>
-            <p>1 business day</p>
-            <p>$10.00</p>
-          </div>
-          <hr />
-          <div className={styles.delivery}>
-            <p>Pick up in store</p>
-            <p>1-3 business days</p>
-            <p>Free</p>
+          <button className={styles["toggle-reviews"]}>More Reviews</button>
+          <button className={styles["write-review"]}>Write a Review</button>
+          <div className={`${styles["review-form"]} ${styles.hidden}`}>
+            <form>
+              <label htmlFor="review-title">Title:</label>
+              <input type="text" id="review-title" name="review-title" required />
+
+              <label htmlFor="review-stars">Rating:</label>
+              <select id="review-stars" name="review-stars" required>
+                <option value="5">★★★★★ - Excellent</option>
+                <option value="4">★★★★☆ - Good</option>
+                <option value="3">★★★☆☆ - Average</option>
+                <option value="2">★★☆☆☆ - Poor</option>
+                <option value="1">★☆☆☆☆ - Terrible</option>
+              </select>
+
+              <label htmlFor="review-body">Your Review:</label>
+              <textarea id="review-body" name="review-body" required></textarea>
+
+              <button type="submit">Submit Review</button>
+            </form>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
