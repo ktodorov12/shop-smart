@@ -1,3 +1,8 @@
+.product-wrapper {
+  width: 100vw;
+  height: 100vh; 
+}
+
 .product-page {
   display: flex;
   max-width: 1200px;
