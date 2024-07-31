@@ -1,13 +1,9 @@
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import useGetDetails from "../../hooks/products/useGetDetails";
 import styles from "./ProductDetails.module.css";
 
-import useFetch from "../../hooks/useFetch";
-
-import { getProductById } from "../../api/apiProducts";
-
 export default function ProductDetails() {
-  const { productId } = useParams();
-  const { values: product, isLoading, error } = useFetch({}, () => getProductById(productId));
+  const { product, isGuest, isOwner, isLoading, error } = useGetDetails();
 
   return (
     <div className={styles["product-wrapper"]}>
@@ -33,20 +29,30 @@ export default function ProductDetails() {
             </div>
 
             <div className={styles["button-group"]}>
-              <div className={styles["quantity-add-bag"]}>
-                <label htmlFor="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" value="1" min="1" />
-                <button className={styles["add-to-bag"]}>Add to Bag</button>
-              </div>
-              <button className={styles["favorite"]}>
-                <span className={styles["heart-icon"]}>❤</span>
-              </button>
+              {isOwner ? (
+                <div className={styles["edit-delete-wrapper"]}>
+                  <Link to={`/edit/${product._id}`} className={styles["edit-delete"]}>Edit</Link>
+                  <button className={styles["edit-delete"]}>Delete</button>
+                </div>
+              ) : (
+                <>
+                  <div className={styles["quantity-add-bag"]}>
+                    <label htmlFor="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" />
+                    <button className={styles["add-to-bag"]}>Add to Bag</button>
+                  </div>
+                  <button className={styles["favorite"]}>
+                    <span className={styles["heart-icon"]}>❤</span>
+                  </button>
+                </>
+              )}
             </div>
 
             <p className={styles["description"]}>{product.description}</p>
             <div className={styles["reviews"]}>
               <h3>Reviews</h3>
               <div className={styles["review-content"]}>
+                {!isOwner && !isGuest ? <button className={styles["write-review"]}>Write a Review</button> : null}
                 <div className={styles["review"]}>
                   <p className={styles["review-title"]}>Amazing Shoes!</p>
                   <div className={styles["review-meta"]}>
@@ -58,7 +64,6 @@ export default function ProductDetails() {
                 </div>
               </div>
               <button className={styles["toggle-reviews"]}>More Reviews</button>
-              <button className={styles["write-review"]}>Write a Review</button>
               <div className={`${styles["review-form"]} ${styles.hidden}`}>
                 <form>
                   <label htmlFor="review-title">Title:</label>
