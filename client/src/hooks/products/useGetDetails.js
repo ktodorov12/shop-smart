@@ -10,7 +10,7 @@ export default function useGetDetails() {
   const { user } = useAuthContext();
 
   const isGuest = !!user;
-  const isOwner = user._id === product._ownerId;
+  const isOwner = user?._id === product?._ownerId;
 
   return { product, isGuest, isOwner, isLoading, error };
 }
