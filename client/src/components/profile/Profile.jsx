@@ -1,15 +1,23 @@
 import styles from "./Profile.module.css";
+import useAuthContext from "../../hooks/auth/useAuthContext";
 
 export default function Profile() {
+  const { user } = useAuthContext();
+
   return (
     <section className={styles["profile-section"]}>
       <div className={styles.container}>
         <div className={styles["profile-container"]}>
           <div className={styles["profile-header"]}>
-            <img src="path/to/your/image.jpg" alt="Profile Picture" className={styles["profile-picture"]} />
-            <h2 className={styles["profile-name"]}>Jane</h2>
-            <p className={styles["profile-username"]}>@janesmith</p>
-            <p className={styles["profile-email"]}>jane.smith@example.com</p>
+            <div className={styles["profile-picture-container"]}>
+              {user?.imageUrl 
+                ? <img src={user.imageUrl} alt="Profile Picture" className={styles["profile-picture"]} /> 
+                : <div className={styles["profile-placeholder"]}></div>
+              }
+            </div>
+            {user?.fullName && <h2 className={styles["profile-name"]}>{user.fullName}</h2>}
+            <p className={styles["profile-username"]}>{user?.username}</p>
+            <p className={styles["profile-email"]}>{user?.email}</p>
             <button className={styles["edit-profile-btn"]}>Edit Profile</button>
           </div>
           <div className={styles["profile-items"]}>
