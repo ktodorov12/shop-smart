@@ -1,31 +1,65 @@
-export default function DeleteModal() {
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { removeProduct } from "../../../api/apiProducts";
+import useForm from "../../../hooks/useForm";
+
+const initialData = {
+    productName: ""
+};
+
+export default function DeleteModal({ onClose, product }) {
+  const [wrongInput, setWrongInput] = useState("");
+  const { data, dataChangeHandler, submitHandler } = useForm(initialData, handleDelete);
+  const navigate = useNavigate();
+
+  async function handleDelete(input) {
+      const check = product.productName.toLowerCase() === input.productName.toLowerCase();
+
+      if(check) {
+        await removeProduct(product._id);
+        navigate("/");
+        onClose();
+      }
+    
+    setWrongInput(input);
+  }
+
   return (
     <div className="modal" data-modal>
-      <div className="modal-close-overlay" data-modal-overlay></div>
+      <div className="modal-close-overlay" data-modal-overlay onClick={onClose}></div>
 
       <div className="modal-content">
-        <button className="modal-close-btn" data-modal-close>
+        <button className="modal-close-btn" data-modal-close onClick={onClose}>
           <ion-icon name="close-outline"></ion-icon>
         </button>
 
-        <div className="newsletter-img">
-          <img src="./assets/images/newsletter.png" alt="subscribe newsletter" width="400" height="400" />
-        </div>
-
         <div className="newsletter">
-          <form action="#">
+          <form method="POST" onSubmit={submitHandler}>
             <div className="newsletter-header">
-              <h3 className="newsletter-title">Subscribe Newsletter.</h3>
+              <h3 className="newsletter-title">Are you absolutely sure?</h3>
+
 
               <p className="newsletter-desc">
-                Subscribe the <b>Anon</b> to get latest products and discount update.
+                This action cannot be undone. 
+                Please type in <b>{product.productName.toLowerCase()}</b> to confirm.
               </p>
             </div>
 
-            <input type="email" name="email" className="email-field" placeholder="Email Address" required />
+            {wrongInput && <p className="error-message">Wrong input: <b>{wrongInput.productName}</b></p>}
+
+            <input 
+                type="text" 
+                id="productName"
+                name="productName" 
+                className={`email-field ${wrongInput && "invalid"}`} 
+                value={data.productName} 
+                onChange={dataChangeHandler} 
+                required 
+            />
 
             <button type="submit" className="btn-newsletter">
-              Subscribe
+              Remove
             </button>
           </form>
         </div>

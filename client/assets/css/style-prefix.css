@@ -357,8 +357,21 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
 
 .btn-newsletter:hover { background: var(--salmon-pink); }
 
+input.invalid {
+  border: 2px solid #e74c3c;
+  background-color: #fce4e4; 
+}
 
+input.invalid:focus {
+  outline: none;
+  box-shadow: 0 0 5px #e74c3c;
+}
 
+.error-message {
+  color: #e74c3c;
+  font-size: 0.875rem;
+  margin-top: 5px;
+}
 
 
 /**

@@ -10,6 +10,8 @@ export const getAllProducts = () => requester.get(endpoints.homeProducts);
 
 export const getProductById = (prodId) => requester.get(endpoints.singleProduct(prodId));
 
+export const removeProduct = (prodId) => requester.del(endpoints.singleProduct(prodId));
+
 export function addProduct(data) {
   const check = Object.values(data).some((p) => p == "" || p == "none");
   if (check) {
@@ -53,3 +55,4 @@ export function editProduct(data) {
 
   return requester.put(endpoints.singleProduct(data._id), editedProd);
 }
+
