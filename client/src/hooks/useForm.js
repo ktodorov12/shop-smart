@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import { useState } from "react";
 
 export default function useForm(initialValue, callback) {
   const [data, setData] = useState(initialValue);
+
+  useEffect(() => {
+    setData(initialValue);
+  }, [initialValue]);
 
   function dataChangeHandler(e) {
     const { name, value } = e.target;
@@ -28,6 +33,9 @@ export default function useForm(initialValue, callback) {
     const entries = formData.map(([k, v]) => {
       if (typeof v === "object") {
         return [k, v];
+      }
+      if (typeof v === "number") {
+        v = v.toString();
       }
       return [k, v.trim()];
     });
