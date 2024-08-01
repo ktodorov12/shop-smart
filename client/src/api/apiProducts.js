@@ -4,6 +4,7 @@ const endpoints = {
   main: "/data/products",
   singleProduct: (prop) => `/data/products/${prop}`,
   homeProducts: "/data/products?select=_id%2CproductName%2Cprice%2Cstars%2Csublist%2Cimg",
+  forProfile: (ownerId) => `/data/products?where=_ownerId%3D%22${ownerId}%22`,
 };
 
 export const getAllProducts = () => requester.get(endpoints.homeProducts);
@@ -11,6 +12,8 @@ export const getAllProducts = () => requester.get(endpoints.homeProducts);
 export const getProductById = (prodId) => requester.get(endpoints.singleProduct(prodId));
 
 export const removeProduct = (prodId) => requester.del(endpoints.singleProduct(prodId));
+
+export const getProductsProfile = (ownerId) => requester.get(endpoints.forProfile(ownerId));
 
 export function addProduct(data) {
   const check = Object.values(data).some((p) => p == "" || p == "none");
@@ -55,4 +58,3 @@ export function editProduct(data) {
 
   return requester.put(endpoints.singleProduct(data._id), editedProd);
 }
-
