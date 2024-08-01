@@ -10,7 +10,9 @@ import ProductDetails from "./components/product-details/ProductDetails";
 import Profile from "./components/profile/Profile";
 import Footer from "./components/footer/Footer";
 
-import AuthProvider from "./contexts/AuthContext"; "./contexts/AuthContext";
+import AuthProvider from "./contexts/AuthContext";
+import EditProduct from "./components/create-edit/EditProduct";
+("./contexts/AuthContext");
 
 function App() {
   return (
@@ -32,6 +34,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/add-product" element={<AddProduct />} />
           <Route path="/details/:productId" element={<ProductDetails />} />
+          <Route path="/edit/:productId" element={<EditProduct />} />
           <Route path="/profile/:profileId" element={<Profile />} />
         </Routes>
       </main>

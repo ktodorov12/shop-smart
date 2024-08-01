@@ -29,3 +29,27 @@ export function addProduct(data) {
 
   return requester.post(endpoints.main, newProd);
 }
+
+export function editProduct(data) {
+  const check = Object.values(data).some((p) => p == "" || p == "none");
+  if (check) {
+    throw new Error("missing data");
+  }
+
+  const editedProd = {
+    _ownerId: data._ownerId,
+    categoryId: data.categoryId,
+    description: data.description,
+    img: data.img,
+    price: data.price,
+    productName: data.productName,
+    sizes: data.sizes,
+    sublist: data.sublist.toLowerCase(),
+    stars: data.stars,
+    _createdOn: data._createdOn,
+    _updatedOn: Date.now(),
+    _id: data._id,
+  };
+
+  return requester.put(endpoints.singleProduct(data._id), editedProd);
+}
