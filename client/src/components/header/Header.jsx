@@ -63,39 +63,13 @@ export default function Header() {
                     </li>
                   </>
                 )}
-                {/* <li className="menu-category">
-                  <Link to="/create-product" className="menu-title">
-                    Create
-                  </Link>
-                </li> */}
-
-                {/* <li className="menu-category">
-                  <Link to="/register" className="menu-title">
-                    Register
-                  </Link>
-                </li> */}
-
-                {/* <li className="menu-category">
-                  <Link to="/login" className="menu-title">
-                    Login
-                  </Link>
-                </li> */}
-
-                {/* <li className="menu-category">
-                  <Link to="javascript:void(0)" className="menu-title" onClick={handleLogout}>
-                    Logout
-                  </Link>
-                </li> */}
               </ul>
             </div>
             {user && (
-              <Link className="action-btn" to="/profile">
+              <Link className="action-btn" to={`/profile/${user._id}`}>
                 <ion-icon name="person-outline"></ion-icon>
               </Link>
             )}
-            {/* <Link className="action-btn" to="/profile">
-              <ion-icon name="person-outline"></ion-icon>
-            </Link> */}
 
             <button className="action-btn">
               <ion-icon name="heart-outline"></ion-icon>
