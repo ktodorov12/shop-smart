@@ -1,8 +1,16 @@
 import ProductCategoryList from "./ProductCategoryList";
-import { useGetAllCategories } from "../../../../hooks/useCategory";
+import useGetCategories from "../../../../hooks/useGetCategories";
+
+const initialData = [
+  {
+    name: "",
+    img: "",
+    sublist: [],
+  },
+];
 
 export default function ProductCategory() {
-  const { categories, isLoading, error } = useGetAllCategories();
+  const { categoriesStored: categories } = useGetCategories(initialData);
 
   return (
     <div className="sidebar has-scrollbar">
@@ -17,10 +25,7 @@ export default function ProductCategory() {
 
         <ul className="sidebar-menu-category-list">
           {categories.map((category) => (
-            <ProductCategoryList 
-              key={category._id}
-              category={category}
-            />
+            <ProductCategoryList key={category._id} category={category} />
           ))}
         </ul>
       </div>

@@ -1,9 +1,8 @@
 import styles from "./AddEdit.module.css";
 
 import useForm from "../../hooks/useForm";
-
-import { getSessionData } from "../../utils/userData";
 import useEditProduct from "../../hooks/products/useEditProduct";
+import useGetCategories from "../../hooks/useGetCategories";
 
 const initialData = {
   categoryId: "none",
@@ -36,7 +35,7 @@ export default function EditProduct() {
     addItemToArray
   } = useForm(product, handleEditProduct);
 
-  const categories = getSessionData("categories");
+  const {categoriesStored: categories} = useGetCategories([]);
   const pickedCategory = categories.find(c => c._id == data.categoryId);
 
   function handleAddNewSize() {

@@ -1,9 +1,6 @@
 import { useState } from "react";
 
-import { useGetSublistForCattegory } from "../../../../hooks/useCategory";
-
 export default function ProductCategoryList({ category }) {
-  const { sublist, isLoading, error } = useGetSublistForCattegory(category);
   const [active, setActive] = useState(false);
 
   const handleActive = () => setActive((oldState) => !oldState);
@@ -22,7 +19,7 @@ export default function ProductCategoryList({ category }) {
       </button>
 
       <ul className={`sidebar-submenu-category-list ${isActive}`} data-accordion>
-        {sublist.map((sub) => (
+        {category.sublist.map((sub) => (
           <li key={sub._id} className="sidebar-submenu-category">
             <a href="#" className="sidebar-submenu-title">
               <p className="product-name">{sub.name}</p>
