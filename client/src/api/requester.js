@@ -7,19 +7,20 @@ const BASE_URL = "http://localhost:3030";
  * @param {string} method - the method for the API call
  * @param {object} data - data to be sent to the BE
  */
-async function requester(url, method, data) {
-  //TODO check whether you can add cookies here
-  // Check MDN fetch for this
+async function requester(url, method, data, isAllowed) {
   const finalUrl = BASE_URL + url;
   const options = {
     method,
     headers: {},
   };
 
+  if (isAllowed) {
+    options.headers["X-Admin"] = "X-Admin";
+  }
+  
   if (data) {
     options.body = JSON.stringify(data);
     options.headers["Content-Type"] = "application/json";
-    //TODO add back4app needed headers
   }
 
   const token = getUserToken();
@@ -33,6 +34,7 @@ async function requester(url, method, data) {
     if (!response.ok) {
       const error = await response.json();
 
+      // TODO fix when there is no user to rerender
       if (error.code == 403) {
         removeSessionData("user");
       }
@@ -51,6 +53,6 @@ async function requester(url, method, data) {
 export default {
   get: (url) => requester(url, "GET"),
   post: (url, data) => requester(url, "POST", data),
-  put: (url, data) => requester(url, "PUT", data),
+  put: (url, data, isAllowed) => requester(url, "PUT", data, isAllowed),
   del: (url) => requester(url, "DELETE"),
 };
