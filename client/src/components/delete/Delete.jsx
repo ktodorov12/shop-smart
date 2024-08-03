@@ -3,25 +3,31 @@ import { useNavigate } from "react-router-dom";
 
 import { removeProduct } from "../../api/apiProducts";
 import useForm from "../../hooks/useForm";
+import useCategories from "../../hooks/useCategories";
 
 const initialData = {
-    productName: ""
+  productName: "",
 };
 
 export default function Delete({ onClose, product }) {
   const [wrongInput, setWrongInput] = useState("");
   const { data, dataChangeHandler, submitHandler } = useForm(initialData, handleDelete);
+
+  const { updateSublistAmount } = useCategories([]);
+
   const navigate = useNavigate();
 
   async function handleDelete(input) {
-      const check = product.productName.toLowerCase() === input.productName.toLowerCase();
+    const check = product.productName.toLowerCase() === input.productName.toLowerCase();
 
-      if(check) {
-        await removeProduct(product._id);
-        navigate("/");
-        onClose();
-      }
-    
+    if (check) {
+      await removeProduct(product._id);
+      updateSublistAmount(product.categoryId, product.sublist, "reduce");
+
+      navigate("/");
+      onClose();
+    }
+
     setWrongInput(input);
   }
 
@@ -39,23 +45,25 @@ export default function Delete({ onClose, product }) {
             <div className="newsletter-header">
               <h3 className="newsletter-title">Are you absolutely sure?</h3>
 
-
               <p className="newsletter-desc">
-                This action cannot be undone. 
-                Please type in <b>{product.productName.toLowerCase()}</b> to confirm.
+                This action cannot be undone. Please type in <b>{product.productName.toLowerCase()}</b> to confirm.
               </p>
             </div>
 
-            {wrongInput && <p className="error-message">Wrong input: <b>{wrongInput.productName}</b></p>}
+            {wrongInput && (
+              <p className="error-message">
+                Wrong input: <b>{wrongInput.productName}</b>
+              </p>
+            )}
 
-            <input 
-                type="text" 
-                id="productName"
-                name="productName" 
-                className={`email-field ${wrongInput && "invalid"}`} 
-                value={data.productName} 
-                onChange={dataChangeHandler} 
-                required 
+            <input
+              type="text"
+              id="productName"
+              name="productName"
+              className={`email-field ${wrongInput && "invalid"}`}
+              value={data.productName}
+              onChange={dataChangeHandler}
+              required
             />
 
             <button type="submit" className="btn-newsletter">
