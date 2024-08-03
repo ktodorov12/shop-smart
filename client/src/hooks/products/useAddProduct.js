@@ -20,7 +20,7 @@ export default function useAddProduct() {
 
     try {
       const prod = await addProduct(product);
-      updateSublistAmount(prod.categoryId, prod.sublist);
+      updateSublistAmount(prod.categoryId, prod.sublist, "increase");
 
       setAddedProduct(prod);
 

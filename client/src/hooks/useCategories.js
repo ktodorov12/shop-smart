@@ -38,7 +38,7 @@ export default function useCategories(initialValues) {
     })();
   }, []);
 
-  async function updateSublistAmount(categoryId, sublistName) {
+  async function updateSublistAmount(categoryId, sublistName, operationType) {
     const foundCategory = categoriesStored.find((c) => c._id === categoryId);
     if (!foundCategory) {
       throw new Error("Category not found");
@@ -50,7 +50,7 @@ export default function useCategories(initialValues) {
     }
 
     try {
-      const updated = await updateSublistValue(sublist, "increase");
+      const updated = await updateSublistValue(sublist, operationType);
       const newCategory = {
         ...foundCategory,
         sublist: foundCategory.sublist.map((s) => (s._id === updated._id ? updated : s)),
