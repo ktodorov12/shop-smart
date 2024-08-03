@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { removeProduct } from "../../../api/apiProducts";
-import useForm from "../../../hooks/useForm";
+import { removeProduct } from "../../api/apiProducts";
+import useForm from "../../hooks/useForm";
 
 const initialData = {
     productName: ""
 };
 
-export default function DeleteModal({ onClose, product }) {
+export default function Delete({ onClose, product }) {
   const [wrongInput, setWrongInput] = useState("");
   const { data, dataChangeHandler, submitHandler } = useForm(initialData, handleDelete);
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import DeleteModal from "../modals/delete/Delete";
+import Delete from "../delete/Delete";
 import styles from "./ProductDetails.module.css";
 import useGetDetails from "../../hooks/products/useGetDetails";
 
@@ -15,7 +15,7 @@ export default function ProductDetails() {
 
   return (
     <>
-      { deleteClicked && <DeleteModal onClose={closeDeleteModal} product={product}/> }
+      { deleteClicked && <Delete onClose={closeDeleteModal} product={product}/> }
       <div className={styles["product-wrapper"]}>
         <div className={styles["product-page"]}>
           <div className={styles["left-column"]}>
