@@ -1,5 +1,5 @@
 import ProductCategoryList from "./ProductCategoryList";
-import useGetCategories from "../../../../hooks/useGetCategories";
+import useCategories from "../../../../hooks/useCategories";
 
 const initialData = [
   {
@@ -10,7 +10,7 @@ const initialData = [
 ];
 
 export default function ProductCategory() {
-  const { categoriesStored: categories } = useGetCategories(initialData);
+  const { categoriesStored: categories } = useCategories(initialData);
 
   return (
     <div className="sidebar has-scrollbar">
