@@ -1345,27 +1345,27 @@
         categories: {
             "a9bae6d8-793e-46c4-a9db-deb9e3484909": {
     			name: "Men's Clothing",
-    			img: "./assets/images/icons/tee.svg",
+    			img: "/assets/images/icons/tee.svg",
     			_id: "a9bae6d8-793e-46c4-a9db-deb9e3484909"
     		},
             "b9e75605-b617-43ac-87a9-8409a990801a": {
     			name: "Beauty",
-    			img: "./assets/images/icons/cosmetics.svg",
+    			img: "/assets/images/icons/cosmetics.svg",
     			_id: "b9e75605-b617-43ac-87a9-8409a990801a"
     		},
             "a459bacd-2912-4eb4-848c-8bc471da2d9f": {
     			name: "Women's Clothing",
-    			img: "./assets/images/icons/dress.svg",
+    			img: "/assets/images/icons/dress.svg",
     			_id: "a459bacd-2912-4eb4-848c-8bc471da2d9f"
     		},
             "79aacd2b-b8ce-4eed-9aab-82abbb334741": {
     			name: "Electronics",
-    			img: "./assets/images/icons/pc.svg",
+    			img: "/assets/images/icons/pc.svg",
     			_id: "79aacd2b-b8ce-4eed-9aab-82abbb334741"
     		},
             "985d9eab-ad2e-4622-a5c8-116261fb1fd2": {
     			name: "Footwear",
-    			img: "./assets/images/icons/shoes.svg",
+    			img: "/assets/images/icons/shoes.svg",
     			_id: "985d9eab-ad2e-4622-a5c8-116261fb1fd2"
     		}
         },

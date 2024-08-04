@@ -3,7 +3,7 @@
       "name": "Men's Clothing",
       "createdAt": "2024-07-25T16:28:16.465Z",
       "updatedAt": "2024-07-25T20:46:40.237Z",
-      "img": "./assets/images/icons/tee.svg",
+      "img": "/assets/images/icons/tee.svg",
       "sublist": [],
       "objectId": "5ty9BgjY9R"
     },
@@ -11,7 +11,7 @@
       "name": "Beauty",
       "createdAt": "2024-07-25T16:45:02.530Z",
       "updatedAt": "2024-07-25T20:46:39.569Z",
-      "img": "./assets/images/icons/cosmetics.svg",
+      "img": "/assets/images/icons/cosmetics.svg",
       "sublist": [],
       "objectId": "7bU6JFmWpD"
     },
@@ -19,7 +19,7 @@
       "name": "Women's Clothing",
       "createdAt": "2024-07-25T16:49:40.798Z",
       "updatedAt": "2024-07-25T20:46:38.632Z",
-      "img": "./assets/images/icons/dress.svg",
+      "img": "/assets/images/icons/dress.svg",
       "sublist": [],
       "objectId": "BoEtWcl99g"
     },
@@ -27,7 +27,7 @@
       "name": "Electronics",
       "createdAt": "2024-07-25T16:34:14.409Z",
       "updatedAt": "2024-07-25T20:46:37.359Z",
-      "img": "./assets/images/icons/pc.svg",
+      "img": "/assets/images/icons/pc.svg",
       "sublist": [],
       "objectId": "LakotjwMGa"
     },
@@ -35,7 +35,7 @@
       "name": "Footwear",
       "createdAt": "2024-07-25T16:40:31.586Z",
       "updatedAt": "2024-07-25T20:46:35.724Z",
-      "img": "./assets/images/icons/shoes.svg",
+      "img": "/assets/images/icons/shoes.svg",
       "sublist": [],
       "objectId": "MjiKWqZUl9"
     }
