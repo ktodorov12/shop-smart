@@ -5,7 +5,7 @@ export default function useLikeProducts(product) {
   const { liked, addLikedProduct, removeLikedProduct } = useLikeContext();
   const { isOwner } = useAuthContext();
 
-  let isLiked = liked.find((p) => p._id == product._id);
+  let isLiked = liked.find((p) => p?._id == product?._id);
 
   const handleLike = () => {
     isLiked = product;
@@ -17,5 +17,5 @@ export default function useLikeProducts(product) {
     removeLikedProduct(product);
   };
 
-  return { isLiked, handleLike, handleRemoveLike, isOwner: isOwner(product._ownerId) };
+  return { liked, isLiked, handleLike, handleRemoveLike, isOwner: isOwner(product?._ownerId) };
 }
