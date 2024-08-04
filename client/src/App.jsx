@@ -12,34 +12,37 @@ import Footer from "./components/footer/Footer";
 
 import AuthProvider from "./contexts/AuthContext";
 import EditProduct from "./components/create-edit/EditProduct";
+import LikedProvider from "./contexts/LikedContext";
 ("./contexts/AuthContext");
 
 function App() {
   return (
     <AuthProvider>
-      <Header />
+      <LikedProvider>
+        <Header />
 
-      <main>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Banner />
-                <ProductCategoryShowcase />
-              </>
-            }
-          />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/add-product" element={<AddProduct />} />
-          <Route path="/details/:productId" element={<ProductDetails />} />
-          <Route path="/edit/:productId" element={<EditProduct />} />
-          <Route path="/profile/:profileId" element={<Profile />} />
-        </Routes>
-      </main>
+        <main>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Banner />
+                  <ProductCategoryShowcase />
+                </>
+              }
+            />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/add-product" element={<AddProduct />} />
+            <Route path="/details/:productId" element={<ProductDetails />} />
+            <Route path="/edit/:productId" element={<EditProduct />} />
+            <Route path="/profile/:profileId" element={<Profile />} />
+          </Routes>
+        </main>
 
-      <Footer />
+        <Footer />
+      </LikedProvider>
     </AuthProvider>
   );
 }

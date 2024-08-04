@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import styles from "./ProductDetails.module.css";
 
 import Delete from "../delete/Delete";
-import styles from "./ProductDetails.module.css";
+
 import useGetDetails from "../../hooks/products/useGetDetails";
+import useLikeProducts from "../../hooks/user-action/useLikeProducts";
 
 export default function ProductDetails() {
   const { product, isGuest, isOwner, isLoading, error } = useGetDetails();
+  const { isLiked, handleLike, handleRemoveLike } = useLikeProducts(product);
+
   const [deleteClicked, setDeleteClicked] = useState(false);
 
 
@@ -51,8 +55,8 @@ export default function ProductDetails() {
                       <input type="number" id="quantity" name="quantity" min="1" />
                       <button className={styles["add-to-bag"]}>Add to Bag</button>
                     </div>
-                    <button className={styles["favorite"]}>
-                      <span className={styles["heart-icon"]}>❤</span>
+                    <button className={styles["favorite"]} onClick={isLiked ? handleRemoveLike : handleLike}>
+                      <ion-icon name={isLiked ? "heart" : "heart-outline"}></ion-icon>
                     </button>
                   </>
                 )}

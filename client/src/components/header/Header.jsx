@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 
 import useLogout from "../../hooks/auth/useLogout";
 import useAuthContext from "../../hooks/auth/useAuthContext";
+import { useLikeContext } from "../../contexts/LikedContext";
 
 export default function Header() {
   const { logout } = useLogout();
   const { user } = useAuthContext();
+  const { liked } = useLikeContext();
 
   function handleLogout(e) {
     e.preventDefault();
@@ -73,7 +75,7 @@ export default function Header() {
 
             <button className="action-btn">
               <ion-icon name="heart-outline"></ion-icon>
-              <span className="count">0</span>
+              <span className="count">{liked.length}</span>
             </button>
 
             <button className="action-btn">

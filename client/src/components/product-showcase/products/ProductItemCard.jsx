@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
+import useLikeProducts from "../../../hooks/user-action/useLikeProducts";
 
 export default function ProductItemCard({ product }) {
+  const { isLiked, handleLike, handleRemoveLike } = useLikeProducts(product);
+
   return (
     <div className="showcase">
       <div className="showcase-banner">
         <img src={product.img} alt={product.productName} className="productuct-img default" width="100%" />
 
         <div className="showcase-actions">
-          <button className="btn-action">
-            <ion-icon name="heart-outline"></ion-icon>
+          <button className="btn-action" onClick={isLiked ? handleRemoveLike : handleLike}>
+            <ion-icon name={isLiked ? "heart" : "heart-outline"}></ion-icon>
           </button>
 
           <button className="btn-action">
