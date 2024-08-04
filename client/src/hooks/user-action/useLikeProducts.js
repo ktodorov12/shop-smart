@@ -17,5 +17,5 @@ export default function useLikeProducts(product) {
     removeLikedProduct(product);
   };
 
-  return { isLiked, handleLike, handleRemoveLike, isOwner };
+  return { isLiked, handleLike, handleRemoveLike, isOwner: isOwner(product._ownerId) };
 }
