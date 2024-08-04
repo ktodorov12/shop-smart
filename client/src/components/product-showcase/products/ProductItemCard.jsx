@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import useLikeProducts from "../../../hooks/user-action/useLikeProducts";
+import useShoppingBag from "../../../hooks/user-action/useShoppingBag";
 
 export default function ProductItemCard({ product }) {
   const { isLiked, handleLike, handleRemoveLike, isOwner } = useLikeProducts(product);
+  const { isAdded, handleAddToBag, handleRemoveFromBag } = useShoppingBag(product);
 
   return (
     <div className="showcase">
@@ -17,8 +19,8 @@ export default function ProductItemCard({ product }) {
               <ion-icon name={isLiked ? "heart" : "heart-outline"}></ion-icon>
             </button>
 
-            <button className="btn-action">
-              <ion-icon name="bag-add-outline"></ion-icon>
+            <button className="btn-action" onClick={isAdded ? handleRemoveFromBag : handleAddToBag}>
+              <ion-icon name={isAdded ? "bag-add" : "bag-add-outline"}></ion-icon>
             </button>
           </div>
         )}

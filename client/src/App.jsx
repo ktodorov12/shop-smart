@@ -13,6 +13,7 @@ import Footer from "./components/footer/Footer";
 import AuthProvider from "./contexts/AuthContext";
 import EditProduct from "./components/create-edit/EditProduct";
 import LikedProvider from "./contexts/LikedContext";
+import ShoppingBagProvider from "./contexts/ShoppingBagContext";
 ("./contexts/AuthContext");
 
 const homePaths = ["/", "/:category/:sublist", "/favourites"];
@@ -21,32 +22,34 @@ function App() {
   return (
     <AuthProvider>
       <LikedProvider>
-        <Header />
+        <ShoppingBagProvider>
+          <Header />
 
-        <main>
-          <Routes>
-            {homePaths.map((path) => (
-              <Route
-                path={path}
-                key={path}
-                element={
-                  <>
-                    <Banner />
-                    <ProductCategoryShowcase />
-                  </>
-                }
-              />
-            ))}
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/add-product" element={<AddProduct />} />
-            <Route path="/details/:productId" element={<ProductDetails />} />
-            <Route path="/edit/:productId" element={<EditProduct />} />
-            <Route path="/profile/:profileId" element={<Profile />} />
-          </Routes>
-        </main>
+          <main>
+            <Routes>
+              {homePaths.map((path) => (
+                <Route
+                  path={path}
+                  key={path}
+                  element={
+                    <>
+                      <Banner />
+                      <ProductCategoryShowcase />
+                    </>
+                  }
+                />
+              ))}
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/add-product" element={<AddProduct />} />
+              <Route path="/details/:productId" element={<ProductDetails />} />
+              <Route path="/edit/:productId" element={<EditProduct />} />
+              <Route path="/profile/:profileId" element={<Profile />} />
+            </Routes>
+          </main>
 
-        <Footer />
+          <Footer />
+        </ShoppingBagProvider>
       </LikedProvider>
     </AuthProvider>
   );

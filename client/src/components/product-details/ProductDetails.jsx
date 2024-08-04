@@ -6,10 +6,12 @@ import Delete from "../delete/Delete";
 
 import useGetDetails from "../../hooks/products/useGetDetails";
 import useLikeProducts from "../../hooks/user-action/useLikeProducts";
+import useShoppingBag from "../../hooks/user-action/useShoppingBag";
 
 export default function ProductDetails() {
   const { product, isGuest, isOwner, isLoading, error } = useGetDetails();
   const { isLiked, handleLike, handleRemoveLike } = useLikeProducts(product);
+  const { handleAddToBag } = useShoppingBag(product);
 
   const [deleteClicked, setDeleteClicked] = useState(false);
 
@@ -53,7 +55,7 @@ export default function ProductDetails() {
                     <div className={styles["quantity-add-bag"]}>
                       <label htmlFor="quantity">Quantity:</label>
                       <input type="number" id="quantity" name="quantity" min="1" />
-                      <button className={styles["add-to-bag"]}>Add to Bag</button>
+                      <button className={styles["add-to-bag"]} onClick={handleAddToBag}>Add to Bag</button>
                     </div>
                     <button className={styles["favorite"]} onClick={isLiked ? handleRemoveLike : handleLike}>
                       <ion-icon name={isLiked ? "heart" : "heart-outline"}></ion-icon>
