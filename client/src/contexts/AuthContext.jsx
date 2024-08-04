@@ -19,7 +19,8 @@ export default function AuthProvider({ children }) {
     user: getSessionData("user"),
   });
 
+  const isOwner = (id) => state.user?._id === id;
   console.log("AuthContext state: ", state);
 
-  return <AuthContext.Provider value={{ ...state, dispatch }}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ ...state, dispatch, isOwner }}>{children}</AuthContext.Provider>;
 }

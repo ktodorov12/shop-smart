@@ -3,7 +3,7 @@ import requester from "../api/requester";
 const endpoints = {
   main: "/data/products",
   singleProduct: (prop) => `/data/products/${prop}`,
-  homeProducts: "/data/products?select=_id%2CproductName%2Cprice%2Cstars%2Csublist%2Cimg",
+  homeProducts: "/data/products?select=_id%2CproductName%2Cprice%2Cstars%2Csublist%2Cimg%2C_ownerId",
   forProfile: (ownerId) => `/data/products?where=_ownerId%3D%22${ownerId}%22`,
 };
 

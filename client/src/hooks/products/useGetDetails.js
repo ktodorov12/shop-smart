@@ -7,10 +7,10 @@ import useAuthContext from "../auth/useAuthContext";
 export default function useGetDetails() {
   const { productId } = useParams();
   const { values: product, isLoading, error } = useFetch({}, () => getProductById(productId));
-  const { user } = useAuthContext();
+  const { user, isOwner: funcIsOwner } = useAuthContext();
 
   const isGuest = !!user;
-  const isOwner = user?._id === product?._ownerId;
+  const isOwner = funcIsOwner(product?._ownerId);
 
   return { product, isGuest, isOwner, isLoading, error };
 }
