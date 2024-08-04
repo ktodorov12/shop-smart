@@ -15,6 +15,8 @@ import EditProduct from "./components/create-edit/EditProduct";
 import LikedProvider from "./contexts/LikedContext";
 ("./contexts/AuthContext");
 
+const homePaths = ["/", "/:category/:sublist", "/favourites"];
+
 function App() {
   return (
     <AuthProvider>
@@ -23,15 +25,18 @@ function App() {
 
         <main>
           <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <Banner />
-                  <ProductCategoryShowcase />
-                </>
-              }
-            />
+            {homePaths.map((path) => (
+              <Route
+                path={path}
+                key={path}
+                element={
+                  <>
+                    <Banner />
+                    <ProductCategoryShowcase />
+                  </>
+                }
+              />
+            ))}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/add-product" element={<AddProduct />} />

@@ -5,6 +5,7 @@ const endpoints = {
   singleProduct: (prop) => `/data/products/${prop}`,
   homeProducts: "/data/products?select=_id%2CproductName%2Cprice%2Cstars%2Csublist%2Cimg%2C_ownerId",
   forProfile: (ownerId) => `/data/products?where=_ownerId%3D%22${ownerId}%22`,
+  byCategory: (catId, sublist) => `/data/products?where=sublist%20LIKE%20%22${sublist}%22%20AND%20categoryId%3D%22${catId}%22`
 };
 
 export const getAllProducts = () => requester.get(endpoints.homeProducts);
@@ -14,6 +15,8 @@ export const getProductById = (prodId) => requester.get(endpoints.singleProduct(
 export const removeProduct = (prodId) => requester.del(endpoints.singleProduct(prodId));
 
 export const getProductsProfile = (ownerId) => requester.get(endpoints.forProfile(ownerId));
+
+export const getProductsByCategory = (catId, sublist) => requester.get(endpoints.byCategory(catId, sublist));
 
 export function addProduct(data) {
   const check = Object.values(data).some((p) => p == "" || p == "none");

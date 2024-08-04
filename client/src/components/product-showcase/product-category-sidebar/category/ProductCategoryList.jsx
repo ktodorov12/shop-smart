@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function ProductCategoryList({ category }) {
   const [active, setActive] = useState(false);
@@ -21,15 +22,22 @@ export default function ProductCategoryList({ category }) {
       <ul className={`sidebar-submenu-category-list ${isActive}`} data-accordion>
         {category.sublist.map((sub) => (
           <li key={sub._id} className="sidebar-submenu-category">
-            <a href="#" className="sidebar-submenu-title">
+            <Link to={customDecode(category.name, sub.name)} className="sidebar-submenu-title">
               <p className="product-name">{sub.name}</p>
               <data value={sub.amount} className="stock" title="Available Stock">
                 {sub.amount}
               </data>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
     </li>
   );
+}
+
+function customDecode(catName, subname) {
+  const formattedCategoryName = catName.replace(/\s+/g, "-").toLowerCase();
+  const formattedSubName = subname.replace(/\s+/g, "-").toLowerCase();
+
+  return `/${formattedCategoryName}/${formattedSubName}`;
 }

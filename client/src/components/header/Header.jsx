@@ -73,10 +73,10 @@ export default function Header() {
               </Link>
             )}
 
-            <button className="action-btn">
+            <Link to={"/favourites"} className="action-btn">
               <ion-icon name="heart-outline"></ion-icon>
               <span className="count">{liked.length}</span>
-            </button>
+            </Link>
 
             <button className="action-btn">
               <ion-icon name="bag-handle-outline"></ion-icon>
