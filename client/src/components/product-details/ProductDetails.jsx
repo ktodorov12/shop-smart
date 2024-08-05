@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./ProductDetails.module.css";
 
 import Delete from "../delete/Delete";
+import NotificationModal from "../modals/notification/Notification";
 
 import useGetDetails from "../../hooks/products/useGetDetails";
 import useLikeProducts from "../../hooks/user-action/useLikeProducts";
@@ -11,7 +12,7 @@ import useShoppingBag from "../../hooks/user-action/useShoppingBag";
 export default function ProductDetails() {
   const { product, isGuest, isOwner, isLoading, error } = useGetDetails();
   const { isLiked, handleLike, handleRemoveLike } = useLikeProducts(product);
-  const { handleAddToBag } = useShoppingBag(product);
+  const { handleAddToBag, showMessage, handleHideMessage } = useShoppingBag(product);
 
   const [deleteClicked, setDeleteClicked] = useState(false);
 
@@ -21,6 +22,7 @@ export default function ProductDetails() {
 
   return (
     <>
+      {showMessage && <NotificationModal onRemove={handleHideMessage} prod={product}></NotificationModal>}
       { deleteClicked && <Delete onClose={closeDeleteModal} product={product}/> }
       <div className={styles["product-wrapper"]}>
         <div className={styles["product-page"]}>

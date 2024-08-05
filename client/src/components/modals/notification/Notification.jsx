@@ -1,20 +1,24 @@
-export default function NotificationModal() {
+import { useEffect } from "react";
+
+export default function NotificationModal({ prod, onRemove }) {
+  useEffect(() => {
+    const timer = setTimeout(onRemove, 3000);
+    return () => clearTimeout(timer);
+  }, [onRemove]);
+
   return (
-    <div className="notification-toast" data-toast>
-      <button className="toast-close-btn" data-toast-close>
+    <div className="notification-toast show" onClick={onRemove} data-toast>
+      <button className="toast-close-btn" onClick={onRemove} data-toast-close>
         <ion-icon name="close-outline"></ion-icon>
       </button>
 
       <div className="toast-banner">
-        <img src="/assets/images/products/jewellery-1.jpg" alt="Rose Gold Earrings" width="80" height="70" />
+        <img src={prod.img} alt={prod.productName} width="80" height="70" />
       </div>
 
       <div className="toast-detail">
-        <p className="toast-message">Someone in new just bought</p>
-
-        <p className="toast-title">Rose Gold Earrings</p>
-
-        <p className="toast-meta">{/* <time datetime="PT2M">2 Minutes</time> ago */}</p>
+        <p className="toast-title">Product added to bag</p>
+        <p className="toast-message">{prod.productName}</p>
       </div>
     </div>
   );
