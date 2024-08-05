@@ -13,17 +13,28 @@ export default function ProductDetails() {
   const { product, isGuest, isOwner, isLoading, error } = useGetDetails();
   const { isLiked, handleLike, handleRemoveLike } = useLikeProducts(product);
   const { handleAddToBag, showMessage, handleHideMessage } = useShoppingBag(product);
-
+  
   const [deleteClicked, setDeleteClicked] = useState(false);
-
+  const [pickedSize, setPickedSize] = useState("");
+  const [quantity, setQuantity] = useState(1);
 
   const openDeleteModal = () => setDeleteClicked(true);
   const closeDeleteModal = () => setDeleteClicked(false);
 
+  const changeQuantity = (e) => {
+    const { value } = e.target;
+    if (value < 1) {
+      setQuantity(1);
+      return;
+    }
+
+    setQuantity(value);
+  };
+
   return (
     <>
       {showMessage && <NotificationModal onRemove={handleHideMessage} prod={product}></NotificationModal>}
-      { deleteClicked && <Delete onClose={closeDeleteModal} product={product}/> }
+      {deleteClicked && <Delete onClose={closeDeleteModal} product={product} />}
       <div className={styles["product-wrapper"]}>
         <div className={styles["product-page"]}>
           <div className={styles["left-column"]}>
@@ -38,10 +49,9 @@ export default function ProductDetails() {
             <div className={styles["size-selection"]}>
               <p>Select Size</p>
               <div className={styles["sizes"]}>
-                {product.sizes &&
-                  product.sizes.map((size, i) => (
-                    <div className={styles["size"]} key={i}>
-                      <button>{size.size}</button>
+                {product?.sizes?.map(({size}, i) => (
+                    <div className={`${styles.size} ${size == pickedSize ? styles.active : ""}`} key={i}>
+                      <button onClick={(e) => setPickedSize(e.target.textContent)}>{size}</button>
                     </div>
                   ))}
               </div>
@@ -49,15 +59,21 @@ export default function ProductDetails() {
               <div className={styles["button-group"]}>
                 {isOwner ? (
                   <div className={styles["edit-delete-wrapper"]}>
-                    <Link to={`/edit/${product._id}`} className={styles["edit-delete"]}>Edit</Link>
-                    <button className={styles["edit-delete"]} onClick={openDeleteModal}>Remove</button>
+                    <Link to={`/edit/${product._id}`} className={styles["edit-delete"]}>
+                      Edit
+                    </Link>
+                    <button className={styles["edit-delete"]} onClick={openDeleteModal}>
+                      Remove
+                    </button>
                   </div>
                 ) : (
                   <>
                     <div className={styles["quantity-add-bag"]}>
                       <label htmlFor="quantity">Quantity:</label>
-                      <input type="number" id="quantity" name="quantity" min="1" />
-                      <button className={styles["add-to-bag"]} onClick={handleAddToBag}>Add to Bag</button>
+                      <input type="number" id="quantity" name="quantity" min="1" value={quantity} onChange={changeQuantity} />
+                      <button className={styles["add-to-bag"]} onClick={() => handleAddToBag(pickedSize, quantity)} disabled={pickedSize ? false : true}>
+                        Add to Bag
+                      </button>
                     </div>
                     <button className={styles["favorite"]} onClick={isLiked ? handleRemoveLike : handleLike}>
                       <ion-icon name={isLiked ? "heart" : "heart-outline"}></ion-icon>

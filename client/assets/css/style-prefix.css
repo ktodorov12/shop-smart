@@ -665,11 +665,17 @@ input.invalid:focus {
   font-weight: bold;
   font-size: 0.9em;
   margin-bottom: 5px;
+  cursor: pointer;
+  color: black;
+}
+
+.item-size {
+  font-size: 0.9em;
+  margin-bottom: 5px;
 }
 
 .item-total {
   font-size: 0.9em;
-  margin-bottom: 10px;
 }
 
 .item-quantity {
@@ -698,10 +704,23 @@ input.invalid:focus {
   border: none;
   color: #d9534f;
   cursor: pointer;
-  margin-top: 5px; 
   font-size: 0.9em; 
   text-align: left; 
   padding: 0;
+}
+
+.shopping-bag {
+  position: rel;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.empty-message {
+  font-size: 18px;
+  color: #333;
 }
 
 .order-summary {
@@ -722,6 +741,7 @@ input.invalid:focus {
 
 .checkout-button {
   background: #ff5722;
+  text-align: center;
   color: white;
   border: none;
   padding: 15px 20px;

@@ -76,6 +76,14 @@
   opacity: 0.5;
 }
 
+.active {
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.2s;
+  border: 4px solid black;
+  box-sizing: border-box;
+}
+
 .button-group {
   display: flex;
   align-items: center;

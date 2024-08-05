@@ -9,9 +9,11 @@ export default function ShoppingBagProvider({ children }) {
   function addToBag(product) {
     setAddedToBag((oldState) => {
       const newState = [...oldState];
-      const isAdded = newState.find((p) => p._id === product._id);
+      const isAdded = newState.find((p) => p.size === product.size);
       if (!isAdded) {
         newState.push(product);
+      } else {
+        isAdded.quantity = Number(isAdded.quantity) + Number(product.quantity);
       }
 
       setSessionData("shoppingBag", newState);
@@ -27,7 +29,16 @@ export default function ShoppingBagProvider({ children }) {
     });
   }
 
-  return <ShoppingBagContext.Provider value={{ addedToBag, addToBag, removeFromBag }}>{children}</ShoppingBagContext.Provider>;
+  const handleProductsChange = (products) => {
+    if (!products) {
+      console.log("No products");
+      return;
+    }
+    setAddedToBag(products);
+    setSessionData("shoppingBag", products);
+  };
+
+  return <ShoppingBagContext.Provider value={{ addedToBag, addToBag, removeFromBag, handleProductsChange }}>{children}</ShoppingBagContext.Provider>;
 }
 
 export function useShoppingBagContext() {
