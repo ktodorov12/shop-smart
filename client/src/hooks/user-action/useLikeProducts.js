@@ -1,5 +1,5 @@
 import { useLikeContext } from "../../contexts/LikedContext";
-import useAuthContext from "../auth/useAuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export default function useLikeProducts(product) {
   const { liked, addLikedProduct, removeLikedProduct } = useLikeContext();

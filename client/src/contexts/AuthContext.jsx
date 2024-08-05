@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import { getSessionData } from "../utils/userData";
 
 export const AuthContext = createContext();
@@ -23,4 +23,9 @@ export default function AuthProvider({ children }) {
   console.log("AuthContext state: ", state);
 
   return <AuthContext.Provider value={{ ...state, dispatch, isOwner }}>{children}</AuthContext.Provider>;
+}
+
+export function useAuthContext() {
+  const context = useContext(AuthContext);
+  return context;
 }

@@ -1,7 +1,7 @@
 import styles from "./Profile.module.css";
 import ProductItemCard from "../product-showcase/products/ProductItemCard";
 
-import useAuthContext from "../../hooks/auth/useAuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 import useFetch from "../../hooks/useFetch";
 import { getProductsProfile } from "../../api/apiProducts";
 import { Link } from "react-router-dom";
@@ -32,9 +32,11 @@ export default function Profile() {
                   ))}
                 </div>
               ) : (
-              <div className={styles["no-products"]}>
+                <div className={styles["no-products"]}>
                   <p>No products added yet.</p>
-                  <Link to={"/add-product"} className={styles["add-product-link"]}>Add products</Link>
+                  <Link to={"/add-product"} className={styles["add-product-link"]}>
+                    Add products
+                  </Link>
                 </div>
               )}
             </div>

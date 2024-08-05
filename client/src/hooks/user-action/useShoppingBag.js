@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useShoppingBagContext } from "../../contexts/ShoppingBagContext";
-import useAuthContext from "../auth/useAuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export default function useShoppingBag(product) {
   const [showMessage, setShowMessage] = useState(false);

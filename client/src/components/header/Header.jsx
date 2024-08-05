@@ -5,7 +5,7 @@ import Checkout from "../checkout/Checkout";
 
 import useLogout from "../../hooks/auth/useLogout";
 
-import useAuthContext from "../../hooks/auth/useAuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 import { useLikeContext } from "../../contexts/LikedContext";
 import { useShoppingBagContext } from "../../contexts/ShoppingBagContext";
 
@@ -27,7 +27,7 @@ export default function Header() {
 
   return (
     <>
-      {openBag && <Checkout onClose={handleCloseBag}/>}
+      {openBag && <Checkout onClose={handleCloseBag} />}
       <header>
         <div className="header-main">
           <div className="container">

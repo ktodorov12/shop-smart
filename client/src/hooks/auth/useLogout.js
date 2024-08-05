@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { removeSessionData } from "../../utils/userData";
-import useAuthContext from "./useAuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 import { logOut } from "../../api/apiAuth";
 
 export default function useLogout() {

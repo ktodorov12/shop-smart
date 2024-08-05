@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useAuthContext from "./useAuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 import { register } from "../../api/apiAuth";
 import { useNavigate } from "react-router-dom";
 import { setSessionData } from "../../utils/userData";

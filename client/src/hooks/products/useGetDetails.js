@@ -2,7 +2,7 @@ import useFetch from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";
 
 import { getProductById } from "../../api/apiProducts";
-import useAuthContext from "../auth/useAuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export default function useGetDetails() {
   const { productId } = useParams();
