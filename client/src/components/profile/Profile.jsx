@@ -21,7 +21,6 @@ export default function Profile() {
             <h2 className={styles["profile-name"]}>{user.fullName}</h2>
             <p className={styles["profile-username"]}>{user.username}</p>
             <p className={styles["profile-email"]}>{user.email}</p>
-            <button className={styles["edit-profile-btn"]}>Edit Profile</button>
           </div>
           <div className={styles["profile-items"]}>
             <h3>Items Added</h3>
