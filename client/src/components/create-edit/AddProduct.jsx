@@ -1,3 +1,4 @@
+import SizeSelector from "../sizes/SizeSelector";
 import styles from "./AddEdit.module.css";
 
 import useForm from "../../hooks/useForm";
@@ -14,33 +15,22 @@ const initialData = {
   sizes: [
     {
       size: "none",
-      amount: "0"
-    }
-  ]
+      amount: 1,
+    },
+  ],
 };
 
 export default function AddProduct() {
-  const { 
-    handleAddProduct,
-    addedProduct,
-    error,
-    isLoading
-  } = useAddProduct();
-  const {
-    data, 
-    dataChangeHandler, 
-    submitHandler,
-    nestedDataChangeHandler,
-    addItemToArray
-  } = useForm(initialData, handleAddProduct);
+  const { handleAddProduct, error, isLoading } = useAddProduct();
+  const { data, dataChangeHandler, submitHandler, nestedDataChangeHandler, addItemToArray } = useForm(initialData, handleAddProduct);
 
-  const {categoriesStored: categories} = useCategories([]);
-  const pickedCategory = categories.find(c => c._id == data.categoryId);
+  const { categoriesStored: categories } = useCategories([]);
+  const pickedCategory = categories.find((c) => c._id == data.categoryId);
 
   function handleAddNewSize() {
     const newSize = {
       size: "none",
-      amount: "0"
+      amount: 1,
     };
 
     addItemToArray("sizes", newSize);
@@ -52,13 +42,16 @@ export default function AddProduct() {
         <div className={styles["create-product-form-container"]}>
           <h2 className={styles["form-title"]}>Add Product</h2>
           <form method="post" className={styles["create-product-form"]} onSubmit={submitHandler}>
-
             <div className={styles["form-group"]}>
               <label htmlFor="categoryId">Category</label>
               <select type="text" id="category" name="categoryId" value={data.categoryId} onChange={dataChangeHandler} required>
                 <option value="none">Select Category</option>
-                {categories.map(c => {
-                  return <option key={c._id} value={c._id}>{c.name}</option>;
+                {categories.map((c) => {
+                  return (
+                    <option key={c._id} value={c._id}>
+                      {c.name}
+                    </option>
+                  );
                 })}
               </select>
             </div>
@@ -66,13 +59,16 @@ export default function AddProduct() {
             <div className={styles["form-group"]}>
               <label htmlFor="sublist">Subcategory</label>
               <select type="text" id="sublist" name="sublist" value={data.sublist} onChange={dataChangeHandler} required>
-              <option value="none">Select Subcategory</option>
-              {data.categoryId !== "none" 
-                ? pickedCategory.sublist.map(s => {
-                  return <option key={s._id} value={s.name}>{s.name}</option>;
-                  })
-                : null
-              }
+                <option value="none">Select Subcategory</option>
+                {data.categoryId !== "none"
+                  ? pickedCategory.sublist.map((s) => {
+                      return (
+                        <option key={s._id} value={s.name}>
+                          {s.name}
+                        </option>
+                      );
+                    })
+                  : null}
               </select>
             </div>
 
@@ -84,7 +80,7 @@ export default function AddProduct() {
             <div className={styles["form-group"]}>
               <label htmlFor="img">Image</label>
               <input type="text" id="product-name" value={data.img} onChange={dataChangeHandler} name="img" required />
-            </div> 
+            </div>
 
             <div className={styles["form-group"]}>
               <label htmlFor="price">Price</label>
@@ -100,22 +96,36 @@ export default function AddProduct() {
               <label htmlFor="sizes">Current Sizes</label>
               {data.sizes.map((item, index) => {
                 return (
-                  <div key={item.index} id="sizes-container" >
+                  <div key={item.index} id="sizes-container">
                     <div className={styles["size-group"]}>
-                      <select name="size" value={item.size} onChange={e => nestedDataChangeHandler(e, index, "sizes")} required>
-                        <option value="none">Select Size</option>
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
-                        <option value="XXL">XXL</option>
-                      </select>
-                      <input type="number" name="amount" placeholder="Amount" value={item.amount} onChange={e => nestedDataChangeHandler(e, index, "sizes")} required />
+                      {pickedCategory ? (
+                        <>
+                          {pickedCategory.sizeType === "none" ? (
+                            ""
+                          ) : (
+                            <select name="size" value={item.size} onChange={(e) => nestedDataChangeHandler(e, index, "sizes")} required>
+                              <SizeSelector sizeType={pickedCategory.sizeType} />
+                            </select>
+                          )}
+
+                          <input
+                            type="number"
+                            name="amount"
+                            placeholder="Amount"
+                            value={item.amount}
+                            min={1}
+                            onChange={(e) => nestedDataChangeHandler(e, index, "sizes")}
+                            required
+                          />
+                        </>
+                      ) : (
+                        <p>Please pick category in order to choose a size</p>
+                      )}
                     </div>
                   </div>
                 );
               })}
-              <button type="button" className={styles["add-size-btn"]} onClick={handleAddNewSize}>
+              <button type="button" className={styles["add-size-btn"]} onClick={handleAddNewSize} disabled={!pickedCategory ? true : false}>
                 Add Another Size
               </button>
             </div>

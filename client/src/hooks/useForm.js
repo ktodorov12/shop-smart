@@ -17,7 +17,12 @@ export default function useForm(initialValue, callback) {
   function nestedDataChangeHandler(e, index, arrayName) {
     const { name, value } = e.target;
     const newArray = [...data[arrayName]];
-    newArray[index][name] = value;
+
+    if (typeof value === "number" && value < 1) {
+      newArray[index][name] = value;
+    } else {
+      newArray[index][name] = value;
+    }
 
     setData((oldState) => ({ ...oldState, [arrayName]: newArray }));
   }
