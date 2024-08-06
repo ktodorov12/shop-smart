@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthContext";
 
 import useCheckout from "../../hooks/user-action/useCheckout";
+import useFinishCheckout from "../../hooks/user-action/useFinishCheckout";
 
 export default function Checkout({ onClose }) {
   const { addedToBag: products, addQuantity, reduceQuantity, removeFromBag } = useCheckout();
+  const { finishChekout } = useFinishCheckout();
   const { user } = useAuthContext();
 
   const totalProduct = (product) => Number(product.price) * Number(product.quantity);
   const total = products.reduce((acc, product) => acc + Number(product.price) * Number(product.quantity), 0);
+  
   return (
     <div className="modal" data-modal>
       <div className="modal-close-overlay" data-modal-overlay onClick={onClose}></div>
@@ -59,7 +62,7 @@ export default function Checkout({ onClose }) {
             <span>${total.toFixed(2)}</span>
           </div>
           {user ? (
-            <button className="checkout-button" disabled={products.length < 0 ? true : false}>
+            <button className="checkout-button" onClick={finishChekout} disabled={products.length <= 0}>
               Checkout
             </button>
           ) : (

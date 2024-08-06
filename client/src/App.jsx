@@ -8,6 +8,7 @@ import Register from "./components/auth/Register";
 import AddProduct from "./components/create-edit/AddProduct";
 import ProductDetails from "./components/product-details/ProductDetails";
 import Profile from "./components/profile/Profile";
+import OrderCompletion from "./components/order-completion/OrderCompletion";
 import Footer from "./components/footer/Footer";
 
 import AuthProvider from "./contexts/AuthContext";
@@ -45,6 +46,7 @@ function App() {
               <Route path="/details/:productId" element={<ProductDetails />} />
               <Route path="/edit/:productId" element={<EditProduct />} />
               <Route path="/profile/:profileId" element={<Profile />} />
+              <Route path="/order-completion" element={<OrderCompletion />} />
             </Routes>
           </main>
 

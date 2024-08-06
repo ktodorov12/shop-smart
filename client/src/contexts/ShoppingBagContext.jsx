@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { getSessionData, setSessionData } from "../utils/userData";
+import { getSessionData, removeSessionData, setSessionData } from "../utils/userData";
 
 const ShoppingBagContext = createContext([]);
 
@@ -37,7 +37,12 @@ export default function ShoppingBagProvider({ children }) {
     });
   }
 
-  return <ShoppingBagContext.Provider value={{ addedToBag, addToBag, removeFromBag, updateProductQuantity }}>{children}</ShoppingBagContext.Provider>;
+  function removeAllProducts() {
+    setAddedToBag([]);
+    removeSessionData("shoppingBag");
+  }
+
+  return <ShoppingBagContext.Provider value={{ addedToBag, addToBag, removeFromBag, updateProductQuantity, removeAllProducts }}>{children}</ShoppingBagContext.Provider>;
 }
 
 export function useShoppingBagContext() {
