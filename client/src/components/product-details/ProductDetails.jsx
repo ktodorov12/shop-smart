@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./ProductDetails.module.css";
 
@@ -8,28 +7,16 @@ import NotificationModal from "../modals/notification/Notification";
 import useGetDetails from "../../hooks/products/useGetDetails";
 import useLikeProducts from "../../hooks/user-action/useLikeProducts";
 import useShoppingBag from "../../hooks/user-action/useShoppingBag";
+import useDeleteProduct from "../../hooks/products/useDeleteProduct";
+import usePickSizeAndQty from "../../hooks/user-action/usePickSizeAndQty";
 
 export default function ProductDetails() {
   const { product, isGuest, isOwner, isLoading, error } = useGetDetails();
   const { isLiked, handleLike, handleRemoveLike } = useLikeProducts(product);
   const { handleAddToBag, showMessage, handleHideMessage } = useShoppingBag(product);
-  
-  const [deleteClicked, setDeleteClicked] = useState(false);
-  const [pickedSize, setPickedSize] = useState("");
-  const [quantity, setQuantity] = useState(1);
 
-  const openDeleteModal = () => setDeleteClicked(true);
-  const closeDeleteModal = () => setDeleteClicked(false);
-
-  const changeQuantity = (e) => {
-    const { value } = e.target;
-    if (value < 1) {
-      setQuantity(1);
-      return;
-    }
-
-    setQuantity(value);
-  };
+  const { deleteClicked, openDeleteModal, closeDeleteModal } = useDeleteProduct();
+  const { handlePickSize, pickedSize, changeQuantity, quantity } = usePickSizeAndQty();
 
   return (
     <>
@@ -49,11 +36,13 @@ export default function ProductDetails() {
             <div className={styles["size-selection"]}>
               <p>Select Size</p>
               <div className={styles["sizes"]}>
-                {product?.sizes?.map(({size}, i) => (
-                    <div className={`${styles.size} ${size == pickedSize ? styles.active : ""}`} key={i}>
-                      <button onClick={(e) => setPickedSize(e.target.textContent)}>{size}</button>
-                    </div>
-                  ))}
+                {product?.sizes?.map(({ size, amount }, i) => (
+                  <div className={`${styles.size} ${size == pickedSize ? styles.active : ""}`} key={i}>
+                    <button onClick={handlePickSize} disabled={amount <= 0 ? true : false}>
+                      {size}
+                    </button>
+                  </div>
+                ))}
               </div>
 
               <div className={styles["button-group"]}>

@@ -1,35 +1,13 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-import { removeProduct } from "../../api/apiProducts";
 import useForm from "../../hooks/useForm";
-import useCategories from "../../hooks/useCategories";
+import useDeleteProduct from "../../hooks/products/useDeleteProduct";
 
 const initialData = {
   productName: "",
 };
 
 export default function Delete({ onClose, product }) {
-  const [wrongInput, setWrongInput] = useState("");
+  const { wrongInput, handleDelete } = useDeleteProduct(product, onClose);
   const { data, dataChangeHandler, submitHandler } = useForm(initialData, handleDelete);
-
-  const { updateSublistAmount } = useCategories([]);
-
-  const navigate = useNavigate();
-
-  async function handleDelete(input) {
-    const check = product.productName.toLowerCase() === input.productName.toLowerCase();
-
-    if (check) {
-      await removeProduct(product._id);
-      updateSublistAmount(product.categoryId, product.sublist, "reduce");
-
-      navigate("/");
-      onClose();
-    }
-
-    setWrongInput(input);
-  }
 
   return (
     <div className="modal" data-modal>
