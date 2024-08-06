@@ -21,24 +21,23 @@ export default function ShoppingBagProvider({ children }) {
     });
   }
 
-  function removeFromBag(product) {
+  function removeFromBag(i) {
     setAddedToBag((oldState) => {
-      const newState = oldState.filter((p) => p._id !== product._id);
+      const newState = oldState.filter((_, ind) => ind !== i);
       setSessionData("shoppingBag", newState);
       return newState;
     });
   }
 
-  const handleProductsChange = (products) => {
-    if (!products) {
-      console.log("No products");
-      return;
-    }
-    setAddedToBag(products);
-    setSessionData("shoppingBag", products);
-  };
+  function updateProductQuantity(index, quantity) {
+    setAddedToBag((oldState) => {
+      const newState = [...oldState];
+      newState[index].quantity = quantity < 1 ? 1 : quantity;
+      return newState;
+    });
+  }
 
-  return <ShoppingBagContext.Provider value={{ addedToBag, addToBag, removeFromBag, handleProductsChange }}>{children}</ShoppingBagContext.Provider>;
+  return <ShoppingBagContext.Provider value={{ addedToBag, addToBag, removeFromBag, updateProductQuantity }}>{children}</ShoppingBagContext.Provider>;
 }
 
 export function useShoppingBagContext() {

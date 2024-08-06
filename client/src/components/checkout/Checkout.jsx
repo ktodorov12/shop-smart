@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 
 import { useAuthContext } from "../../contexts/AuthContext";
 
-import useCheckout from "../../hooks/useCheckout";
+import useCheckout from "../../hooks/user-action/useCheckout";
 
 export default function Checkout({ onClose }) {
-  const { products, addQuantity, reduceQuantity, removeFromBag } = useCheckout();
+  const { addedToBag: products, addQuantity, reduceQuantity, removeFromBag } = useCheckout();
   const { user } = useAuthContext();
 
   const totalProduct = (product) => Number(product.price) * Number(product.quantity);
