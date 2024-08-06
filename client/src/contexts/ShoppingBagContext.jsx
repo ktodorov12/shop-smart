@@ -9,7 +9,7 @@ export default function ShoppingBagProvider({ children }) {
   function addToBag(product) {
     setAddedToBag((oldState) => {
       const newState = [...oldState];
-      const isAdded = newState.find((p) => p.size === product.size);
+      const isAdded = newState.find((p) => p.size === product.size && p._id === product._id);
       if (!isAdded) {
         newState.push(product);
       } else {

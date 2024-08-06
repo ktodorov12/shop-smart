@@ -4,26 +4,19 @@ import { useAuthContext } from "../../contexts/AuthContext";
 
 export default function useShoppingBag(product) {
   const [showMessage, setShowMessage] = useState(false);
-  const { addedToBag, addToBag, removeFromBag } = useShoppingBagContext();
+  const { addedToBag, addToBag } = useShoppingBagContext();
   const { isOwner } = useAuthContext();
 
   let isAdded = addedToBag.find((p) => p?._id === product?._id);
 
   function handleAddToBag(size, quantity) {
-    product.size = size;    
-    product.quantity = quantity;
-    isAdded = product;
+    const newProd = JSON.parse(JSON.stringify(product));
+    newProd.size = size;    
+    newProd.quantity = quantity;
+    isAdded = newProd;
 
-    addToBag(product);
+    addToBag(newProd);
     setShowMessage(true);
-  }
-
-  function handleRemoveFromBag() {
-    delete product.quantity;
-    isAdded = undefined;
-
-    removeFromBag(product);
-    setShowMessage(false);
   }
 
   const handleHideMessage = () => setShowMessage(false);
@@ -32,7 +25,6 @@ export default function useShoppingBag(product) {
     addedToBag,
     isAdded,
     handleAddToBag,
-    handleRemoveFromBag,
     isOwner: isOwner(product._ownerId),
     showMessage,
     handleHideMessage,
