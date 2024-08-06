@@ -22,7 +22,7 @@ export default function useFetch(initialValues, callback) {
         setIsLoading(false);
       }
     })();
-  }, [memorizedFetch]);
+  }, []);
 
   return { values, isLoading, error };
 }
