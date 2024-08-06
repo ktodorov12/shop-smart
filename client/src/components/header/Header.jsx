@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Checkout from "../checkout/Checkout";
@@ -7,23 +6,18 @@ import useLogout from "../../hooks/auth/useLogout";
 
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useLikeContext } from "../../contexts/LikedContext";
-import { useShoppingBagContext } from "../../contexts/ShoppingBagContext";
+import useCheckout from "../../hooks/user-action/useCheckout";
 
 export default function Header() {
-  const [openBag, setOpenBag] = useState(false);
-
+  const { addedToBag, openBag, handleCloseBag, handleOpenBag } = useCheckout();
   const { logout } = useLogout();
   const { user } = useAuthContext();
   const { liked } = useLikeContext();
-  const { addedToBag } = useShoppingBagContext();
 
   function handleLogout(e) {
     e.preventDefault();
     logout();
   }
-
-  const handleOpenBag = () => setOpenBag(true);
-  const handleCloseBag = () => setOpenBag(false);
 
   return (
     <>
