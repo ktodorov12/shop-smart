@@ -17,11 +17,6 @@ export default function useLogin() {
     try {
       const user = await login(entries);
 
-      if (!user) {
-        //TODO fix logic
-        throw Error("No user");
-      }
-
       dispatch({ type: "LOGIN", payload: user });
       setSessionData("user", user);
       navigate("/");

@@ -48,7 +48,9 @@ export default function useForm(initialValue, callback, validationSchema) {
 
     const entr = Object.fromEntries(entries);
     try {
-      await inputValidation(validationSchema, entr);
+      if (validationSchema) {
+        await inputValidation(validationSchema, entr);
+      }
       callback(entr);
 
       setData(initialValue);

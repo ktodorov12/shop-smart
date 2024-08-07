@@ -17,11 +17,6 @@ export default function useSignup() {
     try {
       const user = await register(entries);
 
-      if (!user) {
-        //TODO fix logix
-        throw Error("No user");
-      }
-
       dispatch({ type: "LOGIN", payload: user });
       setSessionData("user", user);
       navigate("/");

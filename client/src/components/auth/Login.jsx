@@ -4,6 +4,8 @@ import styles from "./Auth.module.css";
 import useForm from "../../hooks/useForm";
 import useLogin from "../../hooks/auth/useLogin";
 
+import { loginSchema } from "../../validations/authValidation";
+
 const initialData = {
   email: "",
   password: "",
@@ -11,11 +13,12 @@ const initialData = {
 
 export default function Login() {
   const { handleLogin, error, isLoading } = useLogin();
-  const {
+  const { 
     data: userData, 
     dataChangeHandler, 
-    submitHandler
-  } = useForm(initialData, handleLogin);
+    submitHandler, 
+    validationErrors 
+  } = useForm(initialData, handleLogin, loginSchema);
 
   return (
     <section className={styles["auth-section"]}>
@@ -23,28 +26,25 @@ export default function Login() {
         <form className={styles["auth-form"]} method="post" onSubmit={submitHandler}>
           <h2>Log in</h2>
           <p>Enter your details to continue</p>
+          {error && <div className="error-message">{error}</div>}
 
           <div className={styles["form-group"]}>
             <label htmlFor="email">Email</label>
-            <input 
-              type="text" 
-              id="email" 
-              name="email" 
-              required 
-              onChange={dataChangeHandler}
-              value={userData.email}
-            />
+            {validationErrors?.email && <div className="error-message">{validationErrors?.email}</div>}
+            <input type="text" id="email" name="email" required className={validationErrors?.email && "invalid"} onChange={dataChangeHandler} value={userData.email} />
           </div>
 
           <div className={styles["form-group"]}>
             <label htmlFor="password">Password</label>
-            <input 
-              type="password" 
-              id="password" 
-              name="password" 
+            {validationErrors?.password && <div className="error-message">{validationErrors?.password}</div>}
+            <input
+              type="password"
+              id="password"
+              name="password"
               required
+              className={validationErrors?.password && "invalid"}
               onChange={dataChangeHandler}
-              value={userData.password} 
+              value={userData.password}
             />
           </div>
 
