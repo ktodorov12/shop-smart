@@ -29,7 +29,7 @@ function App() {
         <ShoppingBagProvider>
           <Header />
 
-          <main>
+          <main className="main-content">
             <Routes>
               {homePaths.map((path) => (
                 <Route

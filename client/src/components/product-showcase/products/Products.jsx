@@ -8,8 +8,8 @@ export default function Products() {
 
   return (
     <div className="product-main">
-      {isLoading && <Spinner />}
       <h2 className="title">Explore Marketplace</h2>
+      {isLoading && <Spinner isProd={true} />}
 
       {products.length > 0 ? (
         <div className="product-grid">
@@ -17,9 +17,7 @@ export default function Products() {
             <ProductItemCard key={prod._id} product={prod} />
           ))}
         </div>
-      ) : (
-        <p>No products yet</p>
-      )}
+      ) : isLoading ? "" : <p>No products yet</p>}
     </div>
   );
 }

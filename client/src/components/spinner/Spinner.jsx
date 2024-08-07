@@ -1,6 +1,6 @@
-const Spinner = () => {
+const Spinner = ({ isProd }) => {
   return (
-    <div className="spinner-overlay active">
+    <div className={`"active" ${isProd ? "" : "spinner-overlay"}`}>
       <div className="spinner"></div>
     </div>
   );

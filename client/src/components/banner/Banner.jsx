@@ -5,19 +5,19 @@ const bannerText = [
     subtitle: "Trending item",
     title: "Women's latest fashion sale",
     img: "/assets/images/banner-1.jpg",
-    text: "starting at &dollar; <b>20</b>.00",
+    text: "starting at $20.00",
   },
   {
     subtitle: "Trending accessories",
     title: "Modern sunglasses",
     img: "/assets/images/banner-2.jpg",
-    text: "starting at &dollar; <b>15</b>.00",
+    text: "starting at $15.00",
   },
   {
     subtitle: "Sale Offer",
     title: "New fashion summer sale",
     img: "/assets/images/banner-3.jpg",
-    text: "starting at &dollar; <b>29</b>.99",
+    text: "starting at $29.99",
   },
 ];
 
