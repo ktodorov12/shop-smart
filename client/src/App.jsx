@@ -17,6 +17,7 @@ import LikedProvider from "./contexts/LikedContext";
 import ShoppingBagProvider from "./contexts/ShoppingBagContext";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import PublicRoute from "./components/routes/PublicRoutes";
+import NotFoundPage from "./components/notFound/NotFoundPage.jsx";
 ("./contexts/AuthContext");
 
 const homePaths = ["/", "/:category/:sublist", "/favourites"];
@@ -55,6 +56,8 @@ function App() {
                 <Route path="/profile/:profileId" element={<Profile />} />
                 <Route path="/order-completion" element={<OrderCompletion />} />
               </Route>
+              
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
 
