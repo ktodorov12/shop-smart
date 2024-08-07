@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { inputValidation } from "../utils/inputValidation";
 
-export default function useForm(initialValue, callback) {
+export default function useForm(initialValue, callback, validationSchema) {
   const [data, setData] = useState(initialValue);
+  const [validationErrors, setValidationErrors] = useState({});
 
   useEffect(() => {
     setData(initialValue);
@@ -10,7 +12,6 @@ export default function useForm(initialValue, callback) {
 
   function dataChangeHandler(e) {
     const { name, value } = e.target;
-    //TODO add value check here
     setData((oldState) => ({ ...oldState, [name]: value }));
   }
 
@@ -32,7 +33,7 @@ export default function useForm(initialValue, callback) {
     setData((oldState) => ({ ...oldState, [arrayName]: newArray }));
   }
 
-  function submitHandler(e) {
+  async function submitHandler(e) {
     e.preventDefault();
     const formData = Object.entries({ ...data });
     const entries = formData.map(([k, v]) => {
@@ -44,10 +45,18 @@ export default function useForm(initialValue, callback) {
       }
       return [k, v.trim()];
     });
-    callback(Object.fromEntries(entries));
 
-    setData(initialValue);
+    const entr = Object.fromEntries(entries);
+    try {
+      await inputValidation(validationSchema, entr);
+      callback(entr);
+
+      setData(initialValue);
+      setValidationErrors({});
+    } catch (error) {
+      setValidationErrors(error);
+    }
   }
 
-  return { data, dataChangeHandler, submitHandler, nestedDataChangeHandler, addItemToArray };
+  return { data, dataChangeHandler, submitHandler, nestedDataChangeHandler, addItemToArray, validationErrors };
 }

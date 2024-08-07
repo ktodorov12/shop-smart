@@ -45,8 +45,7 @@ async function requester(url, method, data, isAllowed) {
 
     return response.json();
   } catch (error) {
-    //TODO fix the error logic
-    console.error(error.message);
+    throw error.message;
   }
 }
 
