@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Spinner from "../spinner/Spinner";
 import styles from "./ProductDetails.module.css";
 
 import Delete from "../delete/Delete";
@@ -22,6 +23,7 @@ export default function ProductDetails() {
     <>
       {showMessage && <NotificationModal onRemove={handleHideMessage} prod={product}></NotificationModal>}
       {deleteClicked && <Delete onClose={closeDeleteModal} product={product} />}
+      {isLoading && <Spinner />}
       <div className={styles["product-wrapper"]}>
         <div className={styles["product-page"]}>
           <div className={styles["left-column"]}>

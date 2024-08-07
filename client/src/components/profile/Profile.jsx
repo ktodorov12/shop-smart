@@ -1,5 +1,6 @@
 import styles from "./Profile.module.css";
 import ProductItemCard from "../product-showcase/products/ProductItemCard";
+import Spinner from "../spinner/Spinner";
 
 import { useAuthContext } from "../../contexts/AuthContext";
 import useFetch from "../../hooks/useFetch";
@@ -12,6 +13,7 @@ export default function Profile() {
 
   return (
     <section className={styles["profile-section"]}>
+      {isLoading && <Spinner />}
       <div className={styles.container}>
         <div className={styles["profile-container"]}>
           <div className={styles["profile-header"]}>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Spinner from "../spinner/Spinner";
 
 import styles from "./Auth.module.css";
 import useForm from "../../hooks/useForm";
@@ -25,6 +26,7 @@ export default function Register() {
 
   return (
     <section className={styles["auth-section"]}>
+      {isLoading && <Spinner />}
       <div className={styles["auth-container"]}>
         <form className={styles["auth-form"]} method="post" onSubmit={submitHandler}>
           <h2>Sign up</h2>

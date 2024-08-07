@@ -1,4 +1,5 @@
 import SizeSelector from "../sizes/SizeSelector";
+import Spinner from "../spinner/Spinner";
 import styles from "./AddEdit.module.css";
 
 import useForm from "../../hooks/useForm";
@@ -50,6 +51,7 @@ export default function AddProduct() {
 
   return (
     <section className={styles["create-product-section"]}>
+      {isLoading && <Spinner />}
       <div className={styles.container}>
         <div className={styles["create-product-form-container"]}>
           <h2 className={styles["form-title"]}>Add Product</h2>
