@@ -1364,7 +1364,7 @@
             "79aacd2b-b8ce-4eed-9aab-82abbb334741": {
     			name: "Electronics",
     			img: "/assets/images/icons/pc.svg",
-                sizeType: "none",
+                sizeType: "standart",
     			_id: "79aacd2b-b8ce-4eed-9aab-82abbb334741"
     		},
             "985d9eab-ad2e-4622-a5c8-116261fb1fd2": {

@@ -21,11 +21,6 @@ export const getProductsByCategory = (catId, sublist) => requester.get(endpoints
 export const reduceQtyCheckout = (id, sizes) => requester.put(endpoints.singleProduct(id), sizes, true);
 
 export function addProduct(data) {
-  const check = Object.values(data).some((p) => p == "" || p == "none");
-  if (check) {
-    throw new Error("missing data");
-  }
-
   const newProd = {
     categoryId: data.categoryId,
     description: data.description,
@@ -41,11 +36,6 @@ export function addProduct(data) {
 }
 
 export function editProduct(data) {
-  const check = Object.values(data).some((p) => p == "" || p == "none");
-  if (check) {
-    throw new Error("missing data");
-  }
-
   const editedProd = {
     _ownerId: data._ownerId,
     categoryId: data.categoryId,
