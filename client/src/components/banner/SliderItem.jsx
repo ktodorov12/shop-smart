@@ -1,4 +1,5 @@
-export default function SliderItem({ content: { subtitle, title, img, text } }) {
+import { Link } from "react-router-dom";
+export default function SliderItem({ content: { subtitle, title, img, href } }) {
   return (
     <div className="slider-item">
       <img src={img} alt={title} className="banner-img" />
@@ -8,11 +9,9 @@ export default function SliderItem({ content: { subtitle, title, img, text } }) 
 
         <h2 className="banner-title">{title}</h2>
 
-        <p className="banner-text">{text}</p>
-
-        <a href="#" className="banner-btn">
+        <Link to={href} className="banner-btn">
           Shop now
-        </a>
+        </Link>
       </div>
     </div>
   );
