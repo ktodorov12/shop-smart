@@ -15,6 +15,8 @@ import AuthProvider from "./contexts/AuthContext";
 import EditProduct from "./components/create-edit/EditProduct";
 import LikedProvider from "./contexts/LikedContext";
 import ShoppingBagProvider from "./contexts/ShoppingBagContext";
+import PrivateRoute from "./components/routes/PrivateRoute";
+import PublicRoute from "./components/routes/PublicRoutes";
 ("./contexts/AuthContext");
 
 const homePaths = ["/", "/:category/:sublist", "/favourites"];
@@ -40,13 +42,19 @@ function App() {
                   }
                 />
               ))}
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/add-product" element={<AddProduct />} />
               <Route path="/details/:productId" element={<ProductDetails />} />
-              <Route path="/edit/:productId" element={<EditProduct />} />
-              <Route path="/profile/:profileId" element={<Profile />} />
-              <Route path="/order-completion" element={<OrderCompletion />} />
+
+              <Route element={<PublicRoute />}>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+              </Route>
+
+              <Route element={<PrivateRoute />}>
+                <Route path="/add-product" element={<AddProduct />} />
+                <Route path="/edit/:productId" element={<EditProduct />} />
+                <Route path="/profile/:profileId" element={<Profile />} />
+                <Route path="/order-completion" element={<OrderCompletion />} />
+              </Route>
             </Routes>
           </main>
 
