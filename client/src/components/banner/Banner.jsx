@@ -3,21 +3,21 @@ import SliderItem from "./SliderItem";
 const bannerText = [
   {
     subtitle: "Trending item",
-    title: "Women's latest fashion sale",
-    img: "/assets/images/banner-1.jpg",
-    text: "starting at &dollar; <b>20</b>.00",
+    title: "Man's latest fashion",
+    img: "/assets/images/c.jpg",
+    href: "/men's-clothing/jackets"
   },
   {
     subtitle: "Trending accessories",
-    title: "Modern sunglasses",
-    img: "/assets/images/banner-2.jpg",
-    text: "starting at &dollar; <b>15</b>.00",
+    title: "Modern beauty",
+    img: "/assets/images/s.jpg",
+    href: "/beauty/fragrances"
   },
   {
     subtitle: "Sale Offer",
-    title: "New fashion summer sale",
+    title: "Woman's fashion",
     img: "/assets/images/banner-3.jpg",
-    text: "starting at &dollar; <b>29</b>.99",
+    href: "/women's-clothing/shirts"
   },
 ];
 

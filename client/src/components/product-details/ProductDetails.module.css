@@ -5,7 +5,7 @@
 
 .product-page {
   display: flex;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 20px auto;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -26,11 +26,13 @@
   align-items: center;
   justify-content: center;
   background-color: #f9f9f9;
+  overflow: hidden; /* Ensure no overflow from the image */
 }
 
 .main-image {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Makes the image cover the entire box while maintaining aspect ratio */
   border-radius: 10px;
 }
 
@@ -58,13 +60,19 @@
 }
 
 .size button {
-  width: 60px;
-  height: 60px;
+  display: flex; /* Use flexbox to center content */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  padding: 10px; /* Adjust padding as needed to ensure the content fits well */
+  min-width: 60px; /* Minimum width to maintain button size */
+  height: auto; /* Auto height to adjust based on content */
   border: 1px solid #ddd;
   background-color: #fff;
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.2s;
+  box-sizing: border-box; /* Ensure padding and border are included in the width and height */
+  white-space: nowrap; /* Prevent text from wrapping to a new line */
 }
 
 .size button:hover {
@@ -205,18 +213,18 @@ a.view-details:hover {
 }
 
 .toggle-reviews, .write-review {
-  display: block;
-  margin: 10px 0;
-  background-color: #0073e6;
-  color: #fff;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
-  font-size: 1em;
-  transition: background-color 0.2s;
+  background: var(--bittersweet);
+  color: var(--white);
+  width: max-content; /* Ensure the button width adjusts to fit its content */
+  font-size: 14px; /* Adjust the font size to be more appropriate */
+  font-weight: 500; /* Maintain font weight */
+  text-transform: uppercase; /* Capitalize text */
+  padding: 8px 16px; /* Adjust padding for a more compact button */
+  border-radius: var(--border-radius-sm); /* Maintain border radius for rounded corners */
+  transition: var(--transition-timing); /* Ensure smooth transitions */
+  border: none; /* Remove border if not needed */
 }
+
 
 .toggle-reviews:hover, .write-review:hover {
   background-color: #005bb5;
@@ -277,20 +285,21 @@ a.view-details:hover {
 
 .edit-delete,
 .edit-delete {
-  display: inline-block;
-  padding: 10px;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  background: var(--bittersweet);
+  color: var(--white);
+  width: max-content; /* Ensure the button width adjusts to fit its content */
+  font-size: 14px; /* Adjust the font size to be more appropriate */
+  font-weight: 500; /* Maintain font weight */
+  text-transform: uppercase; /* Capitalize text */
+  padding: 8px 16px; /* Adjust padding for a more compact button */
+  border-radius: var(--border-radius-sm); /* Maintain border radius for rounded corners */
+  transition: var(--transition-timing); /* Ensure smooth transitions */
+  border: none; /* Remove border if not needed */
 }
+
 
 .edit-delete:hover,
 .edit-delete:hover {
-  background-color: #0056b3;
+  background-color: hsl(220, 14%, 4%);
 }
   

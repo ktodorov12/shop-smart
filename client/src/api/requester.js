@@ -1,6 +1,6 @@
 import { getUserToken, removeSessionData } from "../utils/userData";
 
-const BASE_URL = "http://localhost:3030";
+const BASE_URL = "https://shop-smart-no9m-7xx7f52zk-kaloyans-projects-c62708f7.vercel.app";
 /**
  * Basic requester
  * @param {string} url - the url for the fetch
