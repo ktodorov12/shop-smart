@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import Checkout from "../checkout/Checkout";
+import SearchBar from "./SearchBar";
 
 import useLogout from "../../hooks/auth/useLogout";
 
@@ -29,13 +30,7 @@ export default function Header() {
               <img src="/assets/images/logo/logo-no-background.png" alt="Shop Smart's logo" width="80" height="60" />
             </Link>
 
-            <div className="header-search-container">
-              <input type="search" name="search" className="search-field" placeholder="Enter your product name..." />
-
-              <button className="search-btn">
-                <ion-icon name="search-outline"></ion-icon>
-              </button>
-            </div>
+            <SearchBar />
 
             <div className="header-user-actions">
               <div className="container">

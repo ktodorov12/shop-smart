@@ -14,6 +14,8 @@ export function useFetchProducts() {
   const { categoriesStored } = useCategories([]);
   const { liked } = useLikeProducts();
 
+  const searchQuery = location.search.split("=").at(1);
+
   useEffect(() => {
     (async () => {
       setIsLoading(true);
@@ -22,7 +24,7 @@ export function useFetchProducts() {
         if (category && sublist) {
           const formattedCategory = formatForDisplay(category);
           const formattedSublist = encodeURIComponent(formatForDisplay(sublist));
-          
+
           const cat = categoriesStored.find((c) => c.name.toLowerCase() === formattedCategory.toLowerCase());
           const fetched = cat ? await getProductsByCategory(cat._id, formattedSublist) : [];
 
@@ -38,10 +40,18 @@ export function useFetchProducts() {
       } finally {
         setIsLoading(false);
       }
-    })();
-  }, [categoriesStored, category, sublist, location, liked]);
 
-  return {products, error, isLoading};
+      if (searchQuery) {
+        setProducts((oldState) => {
+          return oldState.filter((prod) => {
+            return prod.productName.toLowerCase().includes(searchQuery.toLowerCase());
+          });
+        });
+      }
+    })();
+  }, [categoriesStored, category, sublist, location, liked, searchQuery]);
+
+  return { products, error, isLoading };
 }
 
 function formatForDisplay(text) {
