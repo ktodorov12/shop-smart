@@ -373,6 +373,50 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
   margin-top: 5px;
 }
 
+.error-boundary {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: #333;
+  min-height: 100vh; /* Ensure the boundary takes up at least the full viewport height */
+  display: flex;
+  flex-direction: column;
+}
+
+.error-main {
+  flex: 1; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.error-message {
+  text-align: center;
+}
+
+.error-main h2 {
+  color: #721c24;
+}
+
+.error-main p {
+  font-size: 16px;
+}
+
+.error-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #721c24;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.error-button:hover {
+  background-color: #f5c6cb;
+}
 
 /**
  * NOTIFICATION TOAST 
