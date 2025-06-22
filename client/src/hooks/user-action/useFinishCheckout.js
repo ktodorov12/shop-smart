@@ -2,8 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { reduceQtyCheckout } from "../../api/apiProducts";
 import useCheckout from "./useCheckout";
 
-export default function useFinishCheckout() {
-  const { addedToBag, handleCloseBag, removeAllProducts } = useCheckout();
+export default function useFinishCheckout(handleCloseBag) {
+  const { addedToBag, removeAllProducts } = useCheckout();
   const navigate = useNavigate();
 
   async function finishChekout() {
@@ -43,8 +43,8 @@ export default function useFinishCheckout() {
       });
       await Promise.all(promises);
 
-      navigate("/order-completion");
       handleCloseBag();
+      navigate("/order-completion");
       removeAllProducts();
     } catch (error) {
       console.log(error);

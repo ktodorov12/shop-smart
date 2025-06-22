@@ -7,7 +7,7 @@ import useFinishCheckout from "../../hooks/user-action/useFinishCheckout";
 
 export default function Checkout({ onClose }) {
   const { addedToBag: products, addQuantity, reduceQuantity, removeFromBag } = useCheckout();
-  const { finishChekout } = useFinishCheckout();
+  const { finishChekout } = useFinishCheckout(onClose);
   const { user } = useAuthContext();
 
   const totalProduct = (product) => Number(product.price) * Number(product.quantity);
