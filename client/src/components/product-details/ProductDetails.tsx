@@ -16,7 +16,6 @@ export default function ProductDetails() {
   const { isLiked, handleLike, handleRemoveLike } = useLikeProducts(product);
   const { handleAddToBag, showMessage, handleHideMessage } = useShoppingBag(product);
 
-  // TODO: chech circular dependency between delete hook and component!
   const { deleteClicked, openDeleteModal, closeDeleteModal } = useDeleteProduct();
   const { handlePickSize, pickedSize, changeQuantity, quantity } = usePickSizeAndQty();
 

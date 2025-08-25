@@ -8,32 +8,47 @@ import useCategories from "../useCategories";
 import type { ProdData } from "../../types/products";
 
 export default function useDeleteProduct() {
-  const [wrongInput, setWrongInput] = useState("");
+  const [userValidationInput, setUserValidationInput] = useState("");
   const [deleteClicked, setDeleteClicked] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const { updateSublistAmount } = useCategories([]);
 
   const navigate = useNavigate();
 
-  async function handleDelete(
-    product: ProdData,
-    onClose: () => void,
-    { productName }: { productName: string }
-  ) {
-    const check = product.productName.toLowerCase() === productName.toLowerCase();
+  async function handleDelete(product: ProdData, onClose: () => void) {
+    setError(null);
+    const check = product.productName.toLowerCase() === userValidationInput.toLowerCase();
 
-    if (check) {
+    if (!check) {
+      setError("Input and Product name doesn't match!");
+      return;
+    }
+
+    try {
       await removeProduct(product._id);
-      updateSublistAmount(product.categoryId, product.sublist, "reduce");
+      await updateSublistAmount(product.categoryId, product.sublist, "reduce");
 
       navigate("/");
       onClose();
+    } catch (error) {
+      setError(error instanceof Error ? error.message : String(error));
     }
 
-    setWrongInput(productName);
+    setUserValidationInput("");
   }
 
+  const handleUserValidationInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setUserValidationInput(e.target.value);
   const openDeleteModal = () => setDeleteClicked(true);
   const closeDeleteModal = () => setDeleteClicked(false);
 
-  return { wrongInput, deleteClicked, handleDelete, openDeleteModal, closeDeleteModal };
+  return {
+    userValidationInput,
+    handleUserValidationInputChange,
+    error,
+    deleteClicked,
+    handleDelete,
+    openDeleteModal,
+    closeDeleteModal,
+  };
 }

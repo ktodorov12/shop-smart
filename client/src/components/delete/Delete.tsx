@@ -1,10 +1,5 @@
-import useForm from "../../hooks/useForm";
 import useDeleteProduct from "../../hooks/products/useDeleteProduct";
 import type { ProdData } from "../../types/products";
-
-const initialData = {
-  productName: "",
-};
 
 export default function Delete({
   onClose,
@@ -13,10 +8,13 @@ export default function Delete({
   onClose: () => void;
   product: ProdData;
 }) {
-  const { wrongInput, handleDelete } = useDeleteProduct();
-  const { data, dataChangeHandler, submitHandler } = useForm(product, () =>
-    handleDelete(product, onClose, initialData)
-  );
+  let { userValidationInput, handleUserValidationInputChange, handleDelete, error } =
+    useDeleteProduct();
+
+  const onDelete = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    handleDelete(product, onClose);
+  };
 
   return (
     <div className="modal" data-modal>
@@ -29,7 +27,7 @@ export default function Delete({
         </button>
 
         <div className="newsletter">
-          <form method="POST" onSubmit={submitHandler}>
+          <form method="POST" onSubmit={onDelete}>
             <div className="newsletter-header">
               <h3 className="newsletter-title">Are you absolutely sure?</h3>
 
@@ -39,9 +37,9 @@ export default function Delete({
               </p>
             </div>
 
-            {wrongInput && (
+            {error && (
               <p className="error-message">
-                Wrong input: <b>{wrongInput}</b>
+                Wrong input: <b>{error}</b>
               </p>
             )}
 
@@ -49,9 +47,9 @@ export default function Delete({
               type="text"
               id="productName"
               name="productName"
-              className={`email-field ${wrongInput && "invalid"}`}
-              value={data.productName}
-              onChange={dataChangeHandler}
+              className={`email-field ${error && "invalid"}`}
+              value={userValidationInput}
+              onChange={handleUserValidationInputChange}
               required
             />
 
