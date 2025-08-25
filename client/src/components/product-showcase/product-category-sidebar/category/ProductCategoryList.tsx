@@ -6,7 +6,7 @@ export default function ProductCategoryList({ category }: { category: Category }
   const [active, setActive] = useState(false);
 
   const handleActive = () => setActive((oldState) => !oldState);
-  const isActive = active ? "active" : null;
+  const isActive = active ? "active" : "";
 
   return (
     <li className="sidebar-menu-category" onClick={handleActive}>

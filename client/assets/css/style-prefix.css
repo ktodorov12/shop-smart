@@ -79,7 +79,7 @@ button {
   cursor: pointer;
 }
 
-img, ion-icon, button, a { display: block; }
+img, ion-icon, button, a { display: block; visibility: visible; }
 
 span { display: inline-block; }
 
