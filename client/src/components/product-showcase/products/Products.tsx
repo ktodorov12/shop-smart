@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import Spinner from "../../spinner/Spinner";
 import ProductItemCard from "./ProductItemCard";
 
@@ -8,7 +10,7 @@ export default function Products() {
 
   return (
     <div className="product-main">
-      <h2 className="title">Explore Marketplace</h2>
+      <Link to="/" className="title">Explore Marketplace</Link>
       {isLoading && <Spinner isProd={true} />}
 
       {products.length > 0 ? (
